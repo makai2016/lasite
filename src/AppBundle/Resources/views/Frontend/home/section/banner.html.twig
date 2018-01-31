@@ -1,0 +1,88 @@
+<div class="window-bin" data-hash="banner">
+  <div class="window-back banner" data-title="首页">
+    <div class="banner-box">
+      <div class="banner-cut">
+        <div class="banner-bin swiper-lazy" data-background="{{ asset('static/images/wp1_1.jpg','frontend') }}">
+          <div class="table-box">
+            <div class="table-cell">
+              <div class="banner-write ">
+                <span class="w1">9</span>
+                <span class="w2">
+					  <span class="w21">年专注 · 互联网+</span>
+					  <span class="w22">WEBSITE</span>
+					  <span class="w23">始于 2009 - 2017 展望未来<br/>专注于设计体验，专业于解决方案</span>
+					</span>
+              </div>
+            </div>
+          </div>
+          <div class="banner-absolute">
+            <div class="banner-full visible-lg-block">
+              <ol class="list-paddingleft-2"><li><p><br/></p></li><li><p><br/></p></li><li><p><br/></p></li><li><p><br/></p></li></ol>
+              <ul class="list-paddingleft-2"><li><p><br/></p></li><li><p><br/></p></li><li><p><br/></p></li><li><p><br/></p></li></ul>
+            </div>
+            <div class="banner-border visible-lg-block"></div>
+          </div>
+        </div>
+        <div class="banner-bin swiper-lazy" data-background="{{ asset('static/images/wp1_2.jpg','frontend') }}">
+          <div class="table-box">
+            <div class="table-cell">
+              <div class="banner-write">
+					<span class="w2 wc">
+					  <span class="w21">设计控，也醉了</span>
+					  <span class="w22">I·DESIGN</span>
+					  <span class="w23">不是非要高大上，只是醉心于设计<br/>我们想，再上一个好案例</span>
+					</span>
+              </div>
+            </div>
+          </div>
+          <div class="banner-absolute">
+            <div class="banner-background visible-lg-block"></div>
+          </div>
+        </div>
+        <div class="banner-bin swiper-lazy" data-background="{{ asset('static/images/wp1_3.jpg','frontend') }}">
+          <div class="table-box">
+            <div class="table-cell">
+              <div class="banner-write">
+					<span class="w2 cc">
+					  <span class="w21">技术派，论研发</span>
+					  <span class="w22">DEVELOPER</span>
+					  <span class="w23">我说，业界没有最好的技术，只有最棒的技术开发者<br/>定制研发，为您的客户和团队</span>
+					</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="banner-bin swiper-lazy" data-background="{{ asset('static/images/wp1_4.jpg','frontend') }}">
+          <div class="table-box">
+            <div class="table-cell">
+              <div class="banner-write">
+					<span class="w2 cc">
+					  <span class="w21">先入为主，布局未来</span>
+					  <span class="w22">LAYOUT</span>
+					  <span class="w23">全面布局<em>PC</em>端与<em>移动</em>端<br/>抢占头等商机<br/>基于<em>Html5</em>响应式布局，智能识别多种终端设备</span>
+					</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="banner-ctrl">
+        <div class="ctrl-box ctrl-left"><i class="fa fa-angle-left"></i></div>
+        <div class="ctrl-box ctrl-right"><i class="fa fa-angle-right"></i></div>
+      </div>
+      <div class="banner-news">
+        <b>NEWS：</b>
+        <span class="banner-span">
+			  <ol class="banner-ol">
+          {% for item in news %}
+            <li class="banner-li"><a href="{{ path('article_info',{id: item.id}) }}" title="{{ item.title }}">{{ item.title }}</a></li>
+          {% endfor %}
+			  </ol>
+			</span>
+        <p><a href="{{ path('article_list') }}" title="新闻资讯">more</a></p>
+      </div>
+      <div class="banner-pager"></div>
+      <div class="banner-down"><i class="fa fa-angle-down"></i></div>
+    </div>
+  </div>
+</div>

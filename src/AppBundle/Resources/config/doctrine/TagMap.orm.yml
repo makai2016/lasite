@@ -1,0 +1,47 @@
+AppBundle\Entity\TagMap:
+    type: entity
+    table: tag_map
+    repositoryClass: AppBundle\Entity\TagMapRepository
+    indexes:
+        tag_id:
+            columns:
+                - tag_id
+        target_id:
+            columns:
+                - target_id
+        type:
+            columns:
+                - type
+    uniqueConstraints:
+        tag_id_2:
+            columns:
+                - tag_id
+                - target_id
+                - type
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        tagId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 标签ID
+            column: tag_id
+        targetId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 目标Id
+            column: target_id
+        type:
+            type: smallint
+            nullable: false
+            unsigned: false
+            comment: 类型：1文章，2案例
+    lifecycleCallbacks: {  }

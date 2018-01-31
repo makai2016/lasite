@@ -1,0 +1,19 @@
+{% if pageCount > 1 %}
+<div id="Paging" class="paging">
+  <div class="qzPagination">
+  {% if previous is defined %}
+    <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}{{ (auchor is defined) ? auchor : ''}}" class="prev">«</a>
+  {% endif %}
+  {% for page in pagesInRange %}
+    {% if page != current %}
+    <a href="{{ path(route, query|merge({(pageParameterName): page})) }}{{ (auchor is defined) ? auchor : ''}}">{{ page }}</a>
+    {% else %}
+      <span class="current">{{ page }}</span>
+    {% endif %}
+    {% endfor %}
+  {% if next is defined %}
+    <a href="{{ path(route, query|merge({(pageParameterName): next})) }}{{ (auchor is defined) ? auchor : ''}}" class="next">»</a>
+  {% endif %}
+  </div>
+</div>
+{% endif %}

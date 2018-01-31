@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录</title>
+    <link rel="stylesheet" href="{{ asset('plugins/bootstrap/dist/css/bootstrap.min.css','frontend') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css','frontend') }}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="{{ asset('plugins/Ionicons/css/ionicons.min.css','frontend') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('plugins/adminlte/css/AdminLTE.min.css','frontend') }}">
+</head>
+<body class="hold-transition login-page" style="height: auto">
+<div class="login-box">
+    <div class="login-logo">
+        <a href="#"><b>{{ parameter('domain') }}</b></a>
+    </div>
+    <div class="login-box-body">
+        <p class="login-box-msg">{% if error %}认证失败：账户密码不匹配{% endif %}</p>
+
+        <form action="{{ path('security.login_check') }}" method="post">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control" name="_username" placeholder="userName" required>
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control" name="_password" placeholder="密码" required>
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </form>
+    </div>
+</div>
+<script src="{{ asset('plugins/jquery/dist/jquery.min.js','frontend') }}"></script>
+<script src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js','frontend') }}"></script>
+</body>
+</html>

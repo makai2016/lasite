@@ -1,0 +1,23 @@
+{% set _route = app.request.attributes.get('_route') %}
+{% set _article = ['article_list','article_info','article_category'] %}
+{% set _case = ['case_list','case_info','case_category'] %}
+
+<header class="active" style="height: 100%;">
+  <div class="box">
+    <a href="{{ path('home') }}" title="千助网站建设与制作"><img src="{{ asset('static/images/logo_article.png','frontend') }}" alt="千助阅读"></a>
+    <div class="wechat">
+      <img src="{{ asset('static/images/wechat_code.jpg','frontend') }}" alt="扫描关注网站建设微信公众账号" class="wechat">
+      <p>扫一扫微信二维码<i></i></p>
+    </div>
+    <nav>
+      <ul>
+        <li class="{% if _route not in _case and _route not in _article %}active{% endif %}"><a href="{{ path('home') }}" style="color: rgb(51, 51, 51);">首页</a></li>
+        <li class="{% if _route in _case %}active{% endif %}"><a href="{{ path('case_list') }}" >设计案例</a></li>
+        <li class="{% if _route in _article %}active{% endif %}"><a href="{{ path('article_list') }}">文章动态</a></li>
+        <li class="bg"></li></ul>
+    </nav>
+  </div>
+  <footer>
+    京ICP备08102474号<br>千助科技<u>2008 - 2017</u>版权所有<br><a href="{{ path('home') }}" target="_blank">北京网站建设与制作公司</a>
+  </footer>
+</header>

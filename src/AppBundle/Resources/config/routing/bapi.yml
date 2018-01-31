@@ -1,0 +1,20 @@
+article:
+  type: rest
+  resource: AppBundle\Controller\Bapi\ArticleController
+  name_prefix: bapi_
+category:
+  type: rest
+  resource: AppBundle\Controller\Bapi\CategoryController
+  name_prefix: bapi_
+case:
+  type: rest
+  resource: AppBundle\Controller\Bapi\CaseController
+  name_prefix: bapi_
+cache:
+  type: rest
+  resource: AppBundle\Controller\Bapi\CacheController
+  name_prefix: bapi_
+users:
+  type: rest
+  resource: AppBundle\Controller\Bapi\UserController
+  name_prefix: bapi_

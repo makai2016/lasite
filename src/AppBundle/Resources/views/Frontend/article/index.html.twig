@@ -1,0 +1,27 @@
+{% extends '@Layouts/frontendFrame.html.twig' %}
+{% from '@Frontend/Macros/artlist.html.twig' import artlist %}
+{% from '@Frontend/partial/toolbar.html.twig' import toolbar %}
+{% block title %}
+  {% set _route = app.request.attributes.get('_route') %}
+  {% if _route =='article_list' %}
+    <title>文章动态 - 网站建设|北京网站制作|北京网站设计</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+  {% elseif _route == 'article_category' %}
+    <title>{{ current.name }} - 北京网站建设|北京网站制作|北京网站设计</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+  {% endif %}
+{% endblock %}
+{% block content %}
+  {% include '@Frontend/partial/inner_header.html.twig' %}
+  {{ toolbar(categorys,1) }}
+  {{ artlist(articles) }}
+{% endblock %}
+
+{% block css %}
+<link href="{{ asset('static/css/base.css','frontend') }}" rel="stylesheet">
+{% endblock %}
+{% block js %}
+<script src="{{ asset('static/js/inner.js') }}"></script>
+{% endblock %}

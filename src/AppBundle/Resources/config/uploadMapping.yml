@@ -1,0 +1,8 @@
+AppBundle\Entity\Article:
+    property: thumbnail
+    save_path: /uploads/article
+    mimeType: [image/jpg, image/jpge, image/gif, image/png]
+AppBundle\Entity\Cases:
+    property: thumbnail
+    save_path: /uploads/cases
+    mimeType: [image/jpg, image/jpge, image/gif, image/png]

@@ -1,0 +1,95 @@
+{% extends '@Layouts/backendFrame.html.twig' %}
+{% block page_header %}
+    <h1>案例分类管理<small>创建</small></h1>
+
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-10">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">添加案例分类</h3>
+                </div>
+                <form class="form-horizontal" id="category-form" name="category-form" method="post" enctype="application/x-www-form-urlencoded" action="{{ path('bapi_post_category') }}">
+                    <input type="hidden" name="type" value="2">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">分类名称</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="分类名称">
+                                <span class="help-block name-msg"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="route" class="col-sm-2 control-label">分类url</label>
+                            <div class="col-sm-9">
+                                <input maxlength="10" type="text" name="route" class="form-control" id="route" placeholder="分类url">
+                                <span class="help-block route-msg">/article/{url},仅英文字母</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="keywords" class="col-sm-2 control-label">seo关键字</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="keywords" class="form-control" id="keywords" placeholder="seo关键字">
+                                <span class="help-block keywords-msg"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="description" class="col-sm-2 control-label">seo描述</label>
+                            <div class="col-sm-9">
+                                <textarea name="description" id="description" class="form-control"></textarea>
+                                <span class="help-block description-msg"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button id="save" type="submit" class="btn btn-info">保存</button>
+                    </div>
+                    <!-- /.box-footer -->
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script type="text/javascript" src="{{ asset('plugins/jquery.form.js','frontend') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#save').on('click',function () {
+                var _index = layer.load(1, {
+                    shade: [0.1,'#fff'] //0.1透明度的白色背景
+                });
+                $('#category-form').ajaxForm({
+                    type:'POST',
+                    statusCode:{
+                        204:function (res) {
+                            layer.close(_index)
+                            var index=layer.msg('添加成功');
+                            setTimeout("location.href='{{ path('b_case_category_list') }}'",1000)
+                        },
+                        400:function (res) {
+                            layer.close(_index)
+                            var msg = res.responseJSON.message
+                            if((typeof msg)==='string'){
+                                layer.msg(msg)
+                            }else {
+                                for(var i in msg){
+                                    layer.msg(msg[i])
+                                    return
+                                }
+                            }
+                        },
+                        401:function () {
+                            layer.msg('会话已过期，需要重登录！')
+                        },
+                        500:function () {
+                            layer.close(_index)
+                            layer.msg('服务器出错了')
+                        }
+                    }
+                })
+            })
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dashboard</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="{{ asset('plugins/bootstrap/dist/css/bootstrap.min.css','frontend') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css','frontend') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/Ionicons/css/ionicons.min.css','frontend') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/adminlte/css/AdminLTE.min.css','frontend') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/adminlte/css/skins/skin-blue.min.css','frontend') }}">
+    {% block css %}
+    {% endblock %}
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+    {% include '@Backend/Partial/header.html.twig' %}
+    {% include '@Backend/Partial/sidebar.html.twig' %}
+    <div class="content-wrapper">
+        <section class="content-header">
+        {% block page_header %}
+            <h1>
+                Dashboard
+                <small>Control panel</small>
+            </h1>
+        {% endblock %}
+        </section>
+        <section class="content">
+            {% block content %}{% endblock %}
+        </section>
+    </div>
+    {% include '@Backend/Partial/footer.html.twig' %}
+</div>
+<script src="{{ asset('plugins/jquery/dist/jquery.min.js','frontend') }}"></script>
+<script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js','frontend') }}"></script>
+<script type="text/javascript" src="{{ asset('plugins/layer/layer.js','frontend') }}"></script>
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+    $(document).ready(function () {
+        $('#clearCache').on('click',function () {
+            var index = layer.load(1, {
+                shade: [0.1,'#fff'] //0.1透明度的白色背景
+            });
+            $.ajax({
+                url: '{{ path('bapi_get_clearcache') }}',
+                type: 'GET',
+                statusCode: {
+                    200: function (res) {
+                        layer.close(index)
+                        layer.alert(res.responseText)
+                    },
+                    401:function () {
+                        layer.msg('会话已过期，需要重登录！')
+                    },
+                    500: function () {
+                        layer.close(index)
+                        layer.msg('服务器出错啦')
+                    }
+                }
+            })
+        })
+    })
+</script>
+<script src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js','frontend') }}/"></script>
+<script src="{{ asset('plugins/adminlte/js/adminlte.min.js','frontend') }}"></script>
+{% block js %}
+{% endblock %}
+</body>
+</html>

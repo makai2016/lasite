@@ -1,0 +1,24 @@
+home:
+    path: /
+    defaults:
+        _controller: AppBundle:Frontend\Default:index
+security.login:
+    path:     /authorization
+    defaults: { _controller: AppBundle:Security\Security:login }
+security.login_check:
+    path: /login_check
+security.logout:
+    path: /logout
+backend:
+    prefix: /backend
+    resource: '@AppBundle/Resources/config/routing/backend.yml'
+security.ckupload:
+    path: /ckupload
+    methods: [POST]
+    defaults: { _controller: AppBundle:Security\Security:ckupload }
+bapi:
+  prefix: /_bapi/
+  type: rest
+  resource: '@AppBundle/Resources/config/routing/bapi.yml'
+frontend:
+  resource: '@AppBundle/Resources/config/routing/frontend.yml'

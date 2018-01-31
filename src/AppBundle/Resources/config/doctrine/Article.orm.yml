@@ -1,0 +1,84 @@
+AppBundle\Entity\Article:
+    type: entity
+    table: article
+    repositoryClass: AppBundle\Entity\ArticleRepository
+    indexes:
+        category_id:
+            columns:
+                - category_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        categoryId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: category_id
+        title:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: 标题
+        introduce:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+            comment: 介绍
+        content:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+            comment: 内容
+        thumbnail:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 缩略图
+        publishtime:
+            type: datetime
+            nullable: true
+            comment: 预发布时间
+            column: publishTime
+        recommend:
+            type: boolean
+            nullable: false
+            comment: 是否推荐
+            default: '0'
+        rank:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 排序
+        flow:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 浏览量
+            default: '0'
+        deleted:
+            type: boolean
+            nullable: false
+            comment: 删除的
+            default: '0'
+        published:
+            type: boolean
+            nullable: false
+            comment: 发布状态
+            default: '0'
+        createdAt:
+            type: datetime
+            nullable: false
+            comment: 创建时间
+            column: created_at
+    lifecycleCallbacks:
+      prePersist: [createdAtHandle]

@@ -1,0 +1,28 @@
+services:
+    security.form_user_provider:
+        class: AppBundle\Services\Security\FormUserProvider
+        arguments: ['@doctrine.orm.entity_manager']
+    app.twig_extension:
+        class: AppBundle\Twig\AppExtension
+        arguments: [ '@service_container']
+        public: false
+        tags:
+            - { name: twig.extension }
+    app.tag_peer:
+      class: AppBundle\Services\TagPeer
+      arguments: ['@service_container']
+    app.pdo_session_handler:
+      class: Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
+      arguments:
+        - 'mysql:host=%database_host%;port=%database_port%;dbname=%database_name%'
+        - { db_username: '%database_user%', db_password: '%database_password%' }
+    app.logged_in_user_listener:
+      class: AppBundle\Services\Security\LoggedInUserListener
+      arguments: [ '@router', '@service_container' ]
+      tags:
+        - {name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+    app.kernelExceptionListener:
+      class: AppBundle\EventListener\KernelExceptionListener
+      arguments: ['@security.token_storage']
+      tags:
+        - {name: kernel.event_listener, event: kernel.exception, method: onKernelException,priority: 10}

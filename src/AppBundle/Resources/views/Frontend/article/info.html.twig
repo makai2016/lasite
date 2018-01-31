@@ -1,0 +1,40 @@
+{% extends '@Layouts/frontendFrame.html.twig' %}
+{% from '@Frontend/partial/toolbar.html.twig' import toolbar %}
+{% from '@Frontend/Macros/aside.html.twig' import aside %}
+{% block title %}
+  <title>{{ article.title }} - 网站建设|北京网站制作|北京网站设计</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+{% endblock %}
+{% block content %}
+  {% include '@Frontend/partial/inner_header.html.twig' %}
+  {{ toolbar(categorys,1,article) }}
+  <section class="artshow content active">
+    <div class="box" style="width: 1160px;">
+      <h1>{{ article.title }}</h1>
+      <span class="rel">
+            	<a href="{{ path('home') }}" target="_blank">高端网站建设</a><u>•</u>{{ article.createdAt.format('Y-m-d') }}<u>•</u>
+        <a href="{{ path('article_category',{category: article.category.route}) }}" target="_blank">{{ article.category.name }}</a><u>•</u><span class="glyphicon glyphicon-eye-open" title="浏览次数"></span> <span class="pv">{{ article.flow }}</span>
+            </span>
+      <div class="words">
+        <p style="" align="center"><img src="{{ parameter('img_prefix') }}{{ article.thumbnail }}" class="img-responsive"></p>
+        {{ article.content|raw }}
+      </div>
+      <dl class="tags">
+        <dt>文章关键词<span class="glyphicon glyphicon-tag"></span></dt>
+        {% for tag in article.tags %}
+        <dd><a href="{{ path('tag_list',{tagId: tag.id}) }}" target="_blank">{{ tag.name }}</a></dd>
+        {% endfor %}
+      </dl>
+      <!-- 分享插件  -->
+    </div>
+    {{ aside(recommends) }}
+    </section>
+{% endblock %}
+
+{% block css %}
+  <link href="{{ asset('static/css/base.css','frontend') }}" rel="stylesheet">
+{% endblock %}
+{% block js %}
+  <script src="{{ asset('static/js/inner.js') }}"></script>
+{% endblock %}

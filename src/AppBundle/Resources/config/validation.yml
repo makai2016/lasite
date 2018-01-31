@@ -1,0 +1,83 @@
+AppBundle\Entity\Article:
+    properties:
+        categoryId:
+            - NotBlank:
+                message: 请选择分类
+            - NotNull:
+                message: 请选择分类
+            - GreaterThanOrEqual:
+                value: 1
+                message: 无效的分类ID
+        title:
+            - NotBlank:
+                message: 标题不能为空
+            - NotNull:
+                message: 标题不能为空
+        content:
+            - NotBlank:
+                message: 内容不能为空
+            - NotNull:
+                message: 内容不能为空
+        flow:
+            - Type:
+                type: numeric
+                message: 浏览量不是一个数字
+        rank:
+            - Type:
+                type: numeric
+                message: 排序不是一个数字
+        recommend:
+            - Type:
+                type: bool
+                message: 推荐不是一个布尔值
+        published:
+            - Type:
+                type: bool
+                message: 发布状态不是一个布尔值
+AppBundle\Entity\Category:
+    properties:
+        name:
+            - NotBlank:
+                message: 分类名称不能为空
+            - NotNull:
+                message: 分类名称不能为空
+            - Type:
+                type: string
+                message: 分类名称不是一个字符串
+        route:
+            - NotBlank:
+                message: 分类url不能为空
+            - NotNull:
+                message: 分类url不能为空
+            - Length:
+                max: 10
+                maxMessage: 分类url长度最多10个字符
+        keywords:
+            - Length:
+                max: 200
+                maxMessage: 关键字长度最多200个字符
+        description:
+            - Length:
+                max: 200
+                maxMessage: 描述长度最多200个字符
+AppBundle\Entity\Cases:
+    properties:
+        categoryId:
+            - NotBlank:
+                message: 请选择分类
+            - NotNull:
+                message: 请选择分类
+            - GreaterThanOrEqual:
+                value: 1
+                message: 无效的分类ID
+        title:
+            - NotBlank:
+                message: 标题不能为空
+            - NotNull:
+                message: 标题不能为空
+        content:
+            - NotBlank:
+                message: 内容不能为空
+            - NotNull:
+                message: 内容不能为空
+

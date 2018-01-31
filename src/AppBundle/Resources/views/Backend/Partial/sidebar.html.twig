@@ -1,0 +1,49 @@
+{% set routeName = app.request.attributes.get('_route') %}
+{% set _article = ['b_article_list','b_article_new','b_article_edit','b_article_category_list','b_article_category_new','b_article_category_edit'] %}
+{% set _case = ['b_case_list','b_case_new','b_case_edit','b_case_category_list','b_case_category_new','b_case_category_edit'] %}
+{% set _user = ['b_user_list','b_user_new','b_user_edit'] %}
+<aside class="main-sidebar">
+    <section class="sidebar">
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="{% if routeName in _case %}active{% endif %} treeview">
+                <a href="#"><i class="fa fa-vimeo"></i> <span>案例管理</span>
+                  <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </span></a>
+              <ul class="treeview-menu">
+                <li class="{% if 'b_case_category_new'==routeName %}active{% endif %}"><a href="{{ path('b_case_category_new') }}"><i class="fa fa-pencil"></i> 添加分类</a></li>
+                <li class="{% if 'b_case_category_list'==routeName %}active{% endif %}"><a href="{{ path('b_case_category_list') }}"><i class="fa fa-list"></i> 分类列表</a></li>
+                <li class="{% if 'b_case_new'==routeName %}active{% endif %}"><a href="{{ path('b_case_new') }}"><i class="fa fa-pencil"></i> 添加案例</a></li>
+                <li class="{% if 'b_case_list'==routeName %}active{% endif %}"><a href="{{ path('b_case_list') }}"><i class="fa fa-list"></i> 案例列表</a></li>
+              </ul>
+            </li>
+              <li class="{% if routeName in _article %}active{% endif %} treeview">
+                <a href="#"><i class="fa fa-newspaper-o"></i> <span>新闻管理</span>
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{% if 'b_article_category_new'==routeName %}active{% endif %}"><a href="{{ path('b_article_category_new') }}"><i class="fa fa-pencil"></i> 添加分类</a></li>
+                    <li class="{% if 'b_article_category_list'==routeName %}active{% endif %}"><a href="{{ path('b_article_category_list') }}"><i class="fa fa-list"></i> 分类列表</a></li>
+                    <li class="{% if 'b_article_new'==routeName %}active{% endif %}"><a href="{{ path('b_article_new') }}"><i class="fa fa-pencil"></i> 添加新闻</a></li>
+                    <li class="{% if 'b_article_list'==routeName %}active{% endif %}"><a href="{{ path('b_article_list') }}"><i class="fa fa-list"></i> 新闻列表</a></li>
+                </ul>
+            </li>
+          {% if app.user.hasRole('ROLE_ADMIN') %}
+          <li class="{% if routeName in _user %}active{% endif %} treeview">
+            <a href="#"><i class="fa fa-users"></i> <span>用户管理</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="{% if 'b_user_new'==routeName %}active{% endif %}"><a href="{{ path('b_user_new') }}"><i class="fa fa-pencil"></i> 添加用户</a></li>
+              <li class="{% if 'b_user_list'==routeName %}active{% endif %}"><a href="{{ path('b_user_list') }}"><i class="fa fa-edit"></i> 用户列表</a></li>
+            </ul>
+          </li>
+          <li><a href="#" id="clearCache"><i class="fa fa-bitbucket"></i> <span class="text-green">清除缓存</span></a></li>
+          {% endif %}
+        </ul>
+    </section>
+</aside>

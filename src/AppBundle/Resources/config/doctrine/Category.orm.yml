@@ -1,0 +1,43 @@
+AppBundle\Entity\Category:
+    type: entity
+    table: category
+    repositoryClass: AppBundle\Entity\CategoryRepository
+    indexes:
+        type:
+            columns:
+                - type
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        route:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+        type:
+            type: smallint
+            nullable: false
+            unsigned: false
+            default: '0'
+        keywords:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        description:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+    lifecycleCallbacks: {  }

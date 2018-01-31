@@ -1,0 +1,40 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
+security:
+
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        form_user_provider:
+            id: security.form_user_provider
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+
+            # activate different ways to authenticate
+
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            #http_basic: ~
+
+            # https://symfony.com/doc/current/security/form_login_setup.html
+            form_login:
+                provider: form_user_provider
+                login_path: security.login
+                check_path: security.login_check
+                csrf_token_generator: security.csrf.token_manager
+            logout:
+                path: security.logout
+                target: home
+    access_control:
+        - {path: ^/backend, roles: [ROLE_USER]}
+        - {path: ^/_bapi/users, roles: [ROLE_ADMIN]}
+        - {path: ^/_bapi, roles: [ROLE_USER]}
+        - {path: ^/ckupload, roles: [ROLE_USER]}

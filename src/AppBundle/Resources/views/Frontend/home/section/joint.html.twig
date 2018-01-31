@@ -1,0 +1,45 @@
+{% set joint = [
+  {name:'阿里云云服务器',url:'javascript:void(0);',img:'/static/images/aliyun.png'},
+  {name:'阿里云云服务器',url:'javascript:void(0);',img:'/static/images/aliyun.png'},
+  {name:'阿里云云服务器',url:'javascript:void(0);',img:'/static/images/aliyun.png'},
+  {name:'阿里云云服务器',url:'javascript:void(0);',img:'/static/images/aliyun.png'},
+  {name:'阿里云云服务器',url:'javascript:void(0);',img:'/static/images/aliyun.png'},
+  {name:'阿里云云服务器',url:'javascript:void(0);',img:'/static/images/aliyun.png'},
+  {name:'阿里云云服务器',url:'javascript:void(0);',img:'/static/images/aliyun.png'},
+  {name:'阿里云云服务器',url:'javascript:void(0);',img:'/static/images/aliyun.png'},
+  {name:'阿里云云服务器',url:'javascript:void(0);',img:'/static/images/aliyun.png'},
+  {name:'阿里云云服务器',url:'javascript:void(0);',img:'/static/images/aliyun.png'},
+  {name:'阿里云云服务器',url:'javascript:void(0);',img:'/static/images/aliyun.png'},
+  {name:'阿里云云服务器',url:'javascript:void(0);',img:'/static/images/aliyun.png'},
+  {name:'阿里云云服务器',url:'javascript:void(0);',img:'/static/images/aliyun.png'},
+  {name:'阿里云云服务器',url:'javascript:void(0);',img:'/static/images/aliyun.png'},
+  {name:'阿里云云服务器',url:'javascript:void(0);',img:'/static/images/aliyun.png'},
+] %}
+
+<div class="window-bin" data-hash="joint">
+  <div class="window-back swiper-lazy" data-title="合作" data-background="{{ asset('static/images/wp4.jpg','frontend') }}">
+{#    <div class="joint-ctrl">
+      <div class="ctrl-box ctrl-left"><i class="fa fa-angle-left"></i></div>
+      <div class="ctrl-box ctrl-right"><i class="fa fa-angle-right"></i></div>
+    </div>#}
+    <div class="table-box">
+      <div class="table-cell">
+        <div class="title-box">
+          <h1>COOPERATION</h1>
+          <h2>互联网合作伙伴</h2>
+        </div>
+        <div class="joint-box joint-type-1">
+          <ul class="joint-cut">
+            {% for item in joint %}
+            <li class="joint-bin">
+              <a href="{{ item.url }}" title="{{ item.name }}">
+                <img class="swiper-lazy" data-src="{{ item.img }}" alt="{{ item.name }}">
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

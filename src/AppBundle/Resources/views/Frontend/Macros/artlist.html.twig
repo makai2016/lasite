@@ -1,0 +1,32 @@
+{% macro artlist(articles) %}
+  <section class="artlist content active">
+  <ul class="items">
+    {% for item in articles %}
+      <li>
+        <p class="left">
+          <span class="date">{{ item.createdAt.format('d') }}<u>{{ item.createdAt.format('M') }}</u></span>
+          <a href="{{ path('article_info',{id: item.id}) }}" target="_blank" class="thumb">
+            <img src="{{ parameter('img_prefix') }}{{ item.thumbnail }}" alt="{{ item.title }}">
+          </a>
+        </p>
+        <p class="right" style="width: 1169px;">
+          <span class="title"><a href="{{ path('article_info',{id: item.id}) }}" target="_blank">{{ item.title }}</a></span>
+          <span class="rel">
+            <span class="time">{{ after(item.createdAt) }}</span>
+            <u>•</u>围观热度 <span class="pv">{{ item.flow }}</span><u>•</u>
+            <a href="{{ path('article_category',{category: item.category.route}) }}">{{ item.category.name }}</a>
+          </span>
+          <span class="summary">{{ item.introduce }}</span>
+          <span class="tags">
+            <span class="glyphicon glyphicon-tag"></span>
+            {% for tag in item.tags %}
+            <a href="{{ path('tag_list',{tagId: tag.id}) }}" target="_blank">{{ tag.name }}</a>
+            {% endfor %}
+          </span>
+        </p>
+      </li>
+    {% endfor %}
+  </ul>
+    {{ knp_pagination_render(articles,'@Partial/sliding_frontend.html.twig') }}
+  </section>
+{% endmacro %}

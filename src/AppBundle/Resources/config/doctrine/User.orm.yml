@@ -1,0 +1,51 @@
+AppBundle\Entity\User:
+    type: entity
+    table: user
+    repositoryClass: AppBundle\Entity\UserRepository
+    indexes:
+        user_name:
+            columns:
+                - user_name
+        email:
+            columns:
+                - email
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        userName:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            column: user_name
+        password:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        email:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        roles:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        isactive:
+            type: boolean
+            nullable: false
+            column: isActive
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+    lifecycleCallbacks:
+        prePersist: [createdAtHandle]

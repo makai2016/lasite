@@ -1,0 +1,86 @@
+backend_home:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\Default:index
+b_article_list:
+    path: /article
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\Article:list
+b_article_new:
+    path: /article/create
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\Article:create
+b_article_edit:
+    path: /article/{id}
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\Article:edit
+    requirements:
+        id: ^([1-9])|([1-9]\d+)$
+b_case_list:
+    path: /case
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\Case:list
+b_case_new:
+    path: /case/create
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\Case:create
+b_case_edit:
+    path: /case/{id}
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\Case:edit
+    requirements:
+        id: ^([1-9])|([1-9]\d+)$
+b_article_category_list:
+    path: /article/category
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\ArticleCategory:list
+b_article_category_new:
+    path: /article/category/create
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\ArticleCategory:create
+b_article_category_edit:
+    path: /article/category/{id}
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\ArticleCategory:edit
+b_case_category_list:
+    path: /case/category
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\CaseCategory:list
+b_case_category_new:
+    path: /case/category/create
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\CaseCategory:create
+b_case_category_edit:
+    path: /case/category/{id}
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\CaseCategory:edit
+b_user_list:
+    path: /users
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\User:list
+b_user_new:
+    path: /users/create
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\User:create
+b_user_edit:
+    path: /users/{id}
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\User:edit
+    requirements:
+        id: ^([1-9])|([1-9]\d+)$

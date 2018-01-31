@@ -1,0 +1,23 @@
+{% if pageCount > 1 %}
+  <ul grid class="pagination pagination-sm no-margin pull-right">
+    {% if previous is defined %}
+      <li>
+        <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}{{ (auchor is defined) ? auchor : ''}}">上一页</a>
+      </li>
+    {% endif %}
+    {% for page in pagesInRange %}
+      {% if page != current %}
+        <li>
+          <a href="{{ path(route, query|merge({(pageParameterName): page})) }}{{ (auchor is defined) ? auchor : ''}}">{{ page }}</a>
+        </li>
+      {% else %}
+        <li><a href="#">{{ page }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if next is defined %}
+      <li>
+        <a href="{{ path(route, query|merge({(pageParameterName): next})) }}{{ (auchor is defined) ? auchor : ''}}">下一页</a>
+      </li>
+    {% endif %}
+  </ul>
+{% endif %}

@@ -1,0 +1,51 @@
+{% extends '@Layouts/frontendFrame.html.twig' %}
+{% block title %}
+    <title>{{ tag.name }} - 网站建设|北京网站制作|北京网站设计</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+{% endblock %}
+{% block content %}
+  {% include '@Frontend/partial/inner_header.html.twig' %}
+  <section class="toolbar active">
+    <a href="{{ path('home') }}" title="返回首页" class="homelink"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    <span class="switch glyphicon glyphicon-chevron-left"></span>
+    <div class="logo">
+      <a href="{{ path('home') }}">
+        <img src="{{ asset('static/images/logo_article.png','frontend') }}" class="img-responsive">
+      </a>
+    </div>
+    <h1>标签<span class="glyphicon glyphicon-tag"></span>{{ tag.name }}</h1>
+  </section>
+
+  <section class="taglist content active">
+    <ul class="items">
+      {% for item in targets %}
+      <li>
+        <a href="{% if item.category.type==1 %}{{ path('article_info',{id: item.id}) }}{% elseif item.category.type==2 %}{{ path('case_info',{id: item.id}) }}{% endif %}" target="_blank" class="thumb"><img src="{{ item.thumbnail }}" title="{{ item.title }}" style="height: 100%;" class="img-responsive article"></a>
+        <p>
+          <span class="title"><a href="{% if item.category.type==1 %}{{ path('article_info',{id: item.id}) }}{% elseif item.category.type==2 %}{{ path('case_info',{id: item.id}) }}{% endif %}" target="_blank">{{ item.title }}</a></span>
+          <span class="rel">
+            {{ item.createdAt.format('Y-m-d') }}<u>•</u>
+            <a href="{% if item.category.type==1 %}{{ path('article_category',{category: item.category.route}) }}{% elseif item.category.type==2 %}{{ path('case_category',{category: item.category.route}) }}{% endif %}" id="Repeater1_ctl{{ loop.index }}_Eval_Category" target="_blank">
+              {{ item.category.name }}
+            </a>
+          </span>
+          <span class="tags">标签：
+          {% for tag in item.tags %}
+            <a href="{{ path('tag_list',{tagId: tag.id}) }}" target="_blank" class="active">{{ tag.name }}</a>
+          {% endfor %}
+          </span>
+        </p>
+      </li>
+      {% endfor %}
+    </ul>
+    {{ knp_pagination_render(targets,'@Partial/sliding_frontend.html.twig') }}
+  </section>
+{% endblock %}
+
+{% block css %}
+  <link href="{{ asset('static/css/base.css','frontend') }}" rel="stylesheet">
+{% endblock %}
+{% block js %}
+  <script src="{{ asset('static/js/inner.js') }}"></script>
+{% endblock %}

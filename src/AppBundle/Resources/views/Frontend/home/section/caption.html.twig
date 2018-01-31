@@ -1,0 +1,35 @@
+{% set data = [
+{name:'高端定制网站',ms:'企业高端定制网站设计<br>彰显品牌形象',icon:'html5'},
+{name:'移动网站建设',ms:'定制手机网站 / 微网站制作<br>布局移动互联网',icon:'css3'},
+{name:'业务系统研发',ms:'基于 B/S 架构的系统研发<br>让业务办公轻松自如',icon:'sitemap'},
+{name:'APP应用程序',ms:'基于 iOS / Android 应用开发<br>掌控智能终端时代',icon:'joomla'},
+{name:'UI 美工设计',ms:'IIS等网站运行环境安全维护<br>业务的稳定来源',icon:'shield'},
+] %}
+<div class="window-bin" data-hash="icon">
+  <div class="window-back swiper-lazy" data-title="业务" data-background="{{ asset('static/images/wp2.jpg','frontend') }}">
+    <div class="table-box">
+      <div class="table-cell">
+        <div class="title-box">
+          <i></i>
+          <h1>WHAT CAN WE DO</h1>
+          <h2>我们能做什么</h2>
+        </div>
+        <div class="height-10"></div>
+        <div class="icon-box icon-type-0">
+          <ul>
+            {% for item in data %}
+            <li>
+              <a title="{{ item.name }}">
+                <i class="fa fa-{{ item.icon }}"></i>
+                <h3>{{ item.name }}</h3>
+                <p>{{ item.ms|raw }}</p>
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="icon-text" style="display: block;margin: 0 auto;margin-top: -40px;width: 297px;height: 21px;background: url({{ asset('static/images/words.png','frontend') }}) no-repeat 0px -333px;"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: aoc
+ * Date: 18-1-31
+ * Time: 下午3:57
+ */
+
+namespace AppBundle\Entity;
+
+
+class Sessions
+{
+
+}

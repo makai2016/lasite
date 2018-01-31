@@ -1,0 +1,69 @@
+AppBundle\Entity\Cases:
+    type: entity
+    table: cases
+    repositoryClass: AppBundle\Entity\CasesRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        categoryId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: category_id
+        title:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: 标题
+        thumbnail:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 缩略图
+        banner:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        introduce:
+            type: text
+            nullable: true
+            length: 65535
+            fixed: false
+            comment: 介绍
+        content:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+            comment: 内容
+        deleted:
+            type: boolean
+            nullable: false
+            comment: 删除的
+            default: '0'
+        recommend:
+            type: boolean
+            nullable: false
+            comment: 推荐的
+            default: '0'
+        published:
+            type: boolean
+            nullable: true
+            comment: 发布的
+            default: '1'
+        createdAt:
+            type: datetime
+            nullable: false
+            comment: 创建时间
+            column: created_at
+    lifecycleCallbacks:
+        prePersist: [createdAtHandle]

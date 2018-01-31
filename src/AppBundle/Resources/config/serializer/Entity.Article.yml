@@ -1,0 +1,14 @@
+AppBundle\Entity\Article:
+  properties:
+    property:
+      exclude: true
+    path:
+      exclude: true
+    planimage:
+      exclude: true
+    image:
+      exclude: true
+    constraint:
+      exclude: true
+    file:
+      exclude: true
