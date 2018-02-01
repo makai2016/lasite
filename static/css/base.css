@@ -797,7 +797,7 @@ section.content.active {
 .dock {
     position:fixed;
     right:10px;
-    bottom:45px;
+    bottom:170px;
     width:160px;
     z-index:200;
 }
@@ -863,7 +863,7 @@ section.content.active {
     display:block;
     position:absolute;
     right:5px;
-    padding:5px 10px 5px 15px;
+    padding:5px 1px 5px 5px;
     height:38px;
     font-size:12px;
     line-height:20px;
@@ -889,21 +889,22 @@ section.content.active {
     -moz-opacity:1;
     opacity:1;
     filter:alpha(opacity=100);
+    height: 50px;
 }
 .dock ul.icons li.tel p {
     top:55px;
-    width:80px;
+    width:90px;
     color:#ddd;
     font-family:Arial,"宋体";
 }
 .dock ul.icons li.im p {
     top:110px;
-    width:100px;
+    width:110px;
 }
 .dock ul.icons li.im p a {
     display:block;
     width:100%;
-    height:50px;
+    height:auto;
     line-height:34px;
     color:#2fd0b5;
     font-size:14px;

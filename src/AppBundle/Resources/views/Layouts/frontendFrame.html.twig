@@ -15,6 +15,18 @@
 
 <body>
 {% block content %}{% endblock %}
+<div class="dock">
+  <ul class="icons">
+    <li class="up" onclick="$(window).scrollTop(1)"><i></i></li>
+    <li class="tel" onmouseover="$(this).addClass('active')" onmouseout="$(this).removeClass('active')">
+      <i></i><p>建站咨询热线<br />4006-000-000</p>
+    </li>
+    <li class="im"  onmouseover="$(this).addClass('active')" onmouseout="$(this).removeClass('active')">
+      <i></i><p><a href="javascrtipt:void(0);" target="_blank">点我，建站咨询</a></p>
+    </li>
+  </ul>
+</div>
+
 <script src="{{ asset('plugins/jquery/dist/jquery.min.js','frontend') }}"></script>
 <script src="{{ asset('plugins/bootstrap/dist/js/bootstrap.min.js','frontend') }}"></script>
 {% block js %}{% endblock %}
