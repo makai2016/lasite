@@ -9,8 +9,8 @@
     <meta name="description" content="">
   {% elseif _route == 'article_category' %}
     <title>{{ current.name }} - 北京网站建设|北京网站制作|北京网站设计</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+    <meta name="keywords" content="{{ current.keywords }}">
+    <meta name="description" content="{{ current.description }}">
   {% endif %}
 {% endblock %}
 {% block content %}
