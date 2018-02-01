@@ -28,14 +28,14 @@ class LoggedInUserListener
 
     public function onKernelRequest(GetResponseEvent $event)
     {
-        $denyRouteNameList = ['login'];
+        $denyRouteNameList = ['security.login'];
 
         if ($event->isMasterRequest()) {
             $routeName = $event->getRequest()->get('_route');
             if (in_array($routeName, $denyRouteNameList)) {
                 $security = $this->_container->get('security.authorization_checker');
                 if ($security->isGranted('IS_AUTHENTICATED_FULLY')) {
-                    $url = $this->_router->generate('app_homepage');
+                    $url = $this->_router->generate('home');
                     $event->setResponse(new RedirectResponse($url));
                 }
             }
