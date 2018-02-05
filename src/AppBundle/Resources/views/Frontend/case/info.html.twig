@@ -5,33 +5,136 @@
   <meta name="keywords" content="">
   <meta name="description" content="">
 {% endblock %}
+{% set _pre = prevCase(case.id,case.categoryId) %}
+{% set _next = nextCase(case.id,case.categoryId) %}
 {% block content %}
-  {% include '@Frontend/partial/inner_header.html.twig' %}
-  {{ toolbar(categorys,1,case) }}
-  <section class="caseshow content active" style="width: 1905px;">
-    <div id="Banner" class="banner" style="background:url({{ parameter('img_prefix') }}{{ case.banner }});"></div>
-    <div class="caption">项目介绍</div>
-    <div class="words">
-      <h1>[ {{ case.title }} ]</h1>
-      <span class="rel">网站设计<u>•</u><a href="{{ path('case_category',{category: case.category.route}) }}" target="_blank" title="{{ case.category.name }}行业网站设计">{{ case.category.name }}行业</a></span>
-      {{ case.introduce|raw }}
-      <dl class="tags">
-        <dt>案例标签<span class="glyphicon glyphicon-tag"></span></dt>
-        {% for tag in case.tags %}
-        <dd><a href="{{ path('tag_list',{tagId: tag.id}) }}" target="_blank">{{ tag.name }}</a></dd>
-        {% endfor %}
-      </dl>
-    </div>
-    <div class="caption">设计欣赏</div>
-    <div class="demo" style="width: 1000px;">
-      {{ case.content|raw }}
+  {% include '@Frontend/partial/header.html.twig' %}
+  <section role="main" class="subpage active">
+    <div class="main-box">
+      <div class="banner-content">
+        <div class="banner-click"><i class="fa fa-arrows-alt"></i></div>
+        <div class="met-banner " data-height="450|350|250">
+          <div class="slick-slide">
+            <img class="cover-image" src="{{ case.banner }}" srcset='' alt="{{ case.title }}">
+          </div>
+        </div>
+      </div>
+        {{ toolbar(categorys,2,case) }}
+      <div class="product-title">项目介绍</div>
+      <div class="product-descript">
+        <h3>{{ case.title }}</h3>
+        <font>
+          发布日期
+          <i class="fa fa-clock-o"></i>
+          2016-12-10 08:41:54
+        </font>
+          <div>
+              {{ case.introduce|raw }}
+          </div>
+        <span>
+    {% if case.showPrice %}
+	<b>套餐价格</b>
+	<i class="fa fa-tag"></i>
+    <a title="套餐价格">{{ case.price }}</a>
+    {% endif %}
+  </span>
+      </div>
+      <div class="product-title">详细信息</div>
+      <div class="product-content">
+          {{ case.content|raw }}
+      </div>
+      <div class="page-main">
+        <ul class="pager pager-round">
+            {% if _pre %}
+                <li class="previous">
+                    <a href="{{ path('case_info',{id: _pre.id}) }}" title="{{ _pre.title }}">
+                        上一篇
+                        <span aria-hidden="true" class='hidden-xs'>：{{ _pre.title }}</span>
+                    </a>
+                </li>
+            {% else %}
+                <li class="previous disabled">
+                    <a href="#" title="没有了">
+                        上一篇
+                        <span aria-hidden="true" class='hidden-xs'>：没有了</span>
+                    </a>
+                </li>
+            {% endif %}
+            {% if _next %}
+                <li class="next ">
+                    <a href="{{ path('case_info',{id: _next.id}) }}" title="{{ _next.title }}">
+                    下一篇
+                    <span aria-hidden="true" class='hidden-xs'>：{{ _next.title }}</span>
+                </a>
+                </li>
+            {% else %}
+                <li class="next disabled">
+                    <a href="#" title="没有了">
+                        下一篇
+                        <span aria-hidden="true" class='hidden-xs'>：没有了</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+      </div>
+
+      <button type="button" class="btn btn-icon btn-primary btn-squared met-scroll-top hide">
+        <i class="icon wb-chevron-up" aria-hidden="true"></i>
+      </button>
     </div>
   </section>
+
 {% endblock %}
 
 {% block css %}
-  <link href="{{ asset('static/css/base.css','frontend') }}" rel="stylesheet">
+  <!--start-->
+  <link rel="stylesheet" href="{{ asset('static/css/index.css','frontend') }}">
+  <!--web-icons-->
+  <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css','frontend') }}">
+    {#<link rel="stylesheet" href="{{ asset('static/css/swiper-3.3.1.min.css','frontend') }}">#}
+  <link rel="stylesheet" href="{{ asset('static/css/webui-popover.min.css','frontend') }}">
+  <link rel="stylesheet" href="{{ asset('static/css/metinfo.css','frontend') }}">
+  <!--end-->
 {% endblock %}
 {% block js %}
-  <script src="{{ asset('static/js/inner.js','frontend') }}"></script>
+  <script src="{{ asset('static/js/breakpoints.min.js','frontend') }}"></script>
+  <script src="{{ asset('static/js/core.min.js','frontend') }}"></script>
+    {#<script src="{{ asset('static/js/site.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/modernizr.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/formValidation.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/jquery.placeholder.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/jquery.asScrollable.all.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/jquery.asScrollable.all.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/alertify.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/jquery.appear.js','frontend') }}"></script>#}
+  <script src="{{ asset('static/js/jquery.webui-popover.min.js','frontend') }}"></script>
+    {#<script src="{{ asset('static/js/masonry.pkgd.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/jquery.bootstrap-touchspin.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/spin.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/ladda.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/tablesaw.js','frontend') }}"></script>#}
+  <script src="{{ asset('static/js/swiper-3.3.1.jquery.min.js','frontend') }}"></script>
+    {#<script src="{{ asset('static/js/jquery.lazyload.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/lightgallery-all.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/jquery.matchHeight-min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/slick.min.js','frontend') }}"></script>#}
+  <script src="{{ asset('static/js/jquery.cookie.js','frontend') }}"></script>
+    {#<script src="{{ asset('static/js/isotope.pkgd.min.js','frontend') }}"></script>#}
+  <script src="{{ asset('static/js/metinfo.js','frontend') }}"></script>
+  <script>
+      $('.sidebar-icon').click(function(){
+          if($(this).hasClass('active')){
+              $(this).removeClass('active');
+              $('section[role=main],header[role=heading]').removeClass('active');
+              $.cookie('head_active','current',{path:'/'});
+          }else{
+              $(this).addClass('active');
+              $('section[role=main],header[role=heading]').addClass('active');
+              $.cookie('head_active','active',{path:'/'});
+          }
+          window.setTimeout(function(){
+              if($('#met-grid').length>0) MetAnimOnScroll();
+          },500);
+      });
+  </script>
 {% endblock %}

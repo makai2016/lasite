@@ -1,32 +1,35 @@
 {% macro artlist(articles) %}
-  <section class="artlist content active">
-  <ul class="items">
+  <ul class="met-page-ajax">
     {% for item in articles %}
-      <li>
-        <p class="left">
-          <span class="date">{{ item.createdAt.format('d') }}<u>{{ item.createdAt.format('M') }}</u></span>
-          <a href="{{ path('article_info',{id: item.id}) }}" target="_blank" class="thumb">
-            <img src="{{ parameter('img_prefix') }}{{ item.thumbnail }}" alt="{{ item.title }}">
-          </a>
-        </p>
-        <p class="right" style="width: 1169px;">
-          <span class="title"><a href="{{ path('article_info',{id: item.id}) }}" target="_blank">{{ item.title }}</a></span>
-          <span class="rel">
-            <span class="time">{{ after(item.createdAt) }}</span>
-            <u>•</u>围观热度 <span class="pv">{{ item.flow }}</span><u>•</u>
-            <a href="{{ path('article_category',{category: item.category.route}) }}">{{ item.category.name }}</a>
-          </span>
-          <span class="summary">{{ item.introduce }}</span>
-          <span class="tags">
-            <span class="glyphicon glyphicon-tag"></span>
+      <li class="news_img">
+        <font><b>{{ item.createdAt.format('d') }}</b><u>{{ item.createdAt.format('M') }}</u></font>
+        <a href="{{ path('article_info',{id: item.id}) }}" title="{{ item.title }}" target='_blank'>
+          <img src="{{ parameter('img_prefix') }}{{ item.thumbnail }}" alt="{{ item.title }}" data-original="{{ parameter('img_prefix') }}{{ item.thumbnail }}" >
+        </a>
+        <span>
+        <a href="{{ path('article_info',{id: item.id}) }}" title="{{ item.title }}" target='_self'><h3>{{ item.title }}</h3></a>
+        <em>
+          <u>阅读</u>
+          <i class="fa fa-eye"></i>
+            {{ item.flow }}
+          &nbsp;·&nbsp;
+          <u>发布日期</u>
+          <i class="fa fa-clock-o"></i>
+            {{ item.createdAt.format('Y-m-d') }}
+          {#&nbsp;·&nbsp;
+          <i class="fa fa-smile-o"></i>
+          马化腾#}
+        </em>
+        <p>　{{ item.introduce }}　</p>
+        <strong>
+          <i class="fa fa-tag"></i>
             {% for tag in item.tags %}
-            <a href="{{ path('tag_list',{tagId: tag.id}) }}" target="_blank">{{ tag.name }}</a>
+              <a href="{{ path('tag_list',{tagId: tag.id}) }}" target="_blank">{{ tag.name }}</a>
             {% endfor %}
-          </span>
-        </p>
+        </strong>
+      </span>
       </li>
     {% endfor %}
   </ul>
     {{ knp_pagination_render(articles,'@Partial/sliding_frontend.html.twig') }}
-  </section>
 {% endmacro %}

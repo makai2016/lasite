@@ -1,8 +1,11 @@
-<header role="heading" class="current">
+{% set _route = app.request.attributes.get('_route') %}
+{% set _article = ['article_list','article_info','article_category'] %}
+{% set _case = ['case_list','case_info','case_category'] %}
+<header role="heading" class="current {% if app.request.attributes.get('_route')!='home'  %}active{% endif %}">
   <div class="head-box">
     <div class="head-top">
       <div class="logo-box">
-        <a href="https://show.metinfo.cn/muban/M1156008/328/" title="互联网网站模板|IT行业网站模板">
+        <a href="{{ path('home') }}" title="互联网网站模板|IT行业网站模板">
           <img src="{{ asset('static/images/logo_article.png','frontend') }}" title="互联网网站模板|IT行业网站模板" alt="互联网网站模板|IT行业网站模板">
         </a>
       </div>
@@ -18,13 +21,13 @@
     <div class="nav-cut">
       <ul>
 
-        <li class="nav1 active"><a href="{{ path('home') }}" title="精彩首页">精彩首页</a></li>
+        <li class="nav1 {% if _route =='home' %}active{% endif %}"><a href="{{ path('home') }}" title="精彩首页">精彩首页</a></li>
 
-        <li class="nav1 ">
+        <li class="nav1 {% if _route in _article %}active{% endif %}">
           <a href="{{ path('article_list') }}"  title="新闻资讯" data-alert="全部">新闻资讯</a>
         </li>
 
-        <li class="nav1 ">
+        <li class="nav1 {% if _route in _case %}active{% endif %}">
           <a href="{{ path('case_list') }}"  title="案例展示" data-alert="全部">案例展示</a>
         </li>
         <li class="background"></li>

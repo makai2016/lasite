@@ -1,19 +1,18 @@
 {% macro aside(recommend) %}
-<aside class="active" style="top: 0px;">
-  <div class="ad"><a href="{{ path('home') }}" target="_blank"><img src="{{ asset('static/images/ad.jpg') }}" alt="建网站，找千助，网站建设品牌设计企业"></a></div>
-  <div class="caption"><h3>推荐阅读</h3></div>
-  <ul class="items">
-    {% for item in recommend %}
-    <li>
-      <a href="{{ path('article_info',{id: item.id}) }}" target="_blank" class="thumb"><img src="{{ item.thumbnail }}" alt="{{ item.title }}"></a>
-      <span class="title">
-        <a href="{{ path('article_info',{id: item.id}) }}" target="_blank" title="{{ item.title }}">
-         {% if item.title|length > 19 %} {{ item.title|slice[:19] }}...{% else %}{{ item.title }}{% endif %}
+<div class="information-hots">
+  <div>
+    <h3>为您推荐</h3>
+    <ul>
+      {% for item in recommend %}
+      <li>
+        <a href="{{ path('article_info',{id: item.id}) }}" title="{{ item.title }}" target="_self">
+          <img data-original="{{ item.thumbnail }}" title="{{ item.title }}" src="{{ item.thumbnail }}" class="imgload">
+          <span>{{ item.title|slice(0,25) }}...</span>
+          <font><i class="fa fa-clock-o"></i> {{ item.createdAt.format('Y-m-d') }}</font>
         </a>
-      </span>
-      <span class="rel">{{ after(item.createdAt) }}<span class="glyphicon glyphicon-eye-open" title="浏览次数"></span>{{ item.flow }}</span>
-    </li>
-    {% endfor %}
-  </ul>
-</aside>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
 {% endmacro %}

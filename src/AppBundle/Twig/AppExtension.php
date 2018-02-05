@@ -81,7 +81,7 @@ class AppExtension extends \Twig_Extension
             ->setMaxResults(1)->orderBy('a.id','DESC');
         $result = $qb->getQuery()->getOneOrNullResult();
 
-        return $result ? $result->getId():false;
+        return $result;
     }
 
     public function nextArticle($id,$categoryId)
@@ -93,7 +93,7 @@ class AppExtension extends \Twig_Extension
             ->setMaxResults(1)->orderBy('a.id','DESC');
         $result = $qb->getQuery()->getOneOrNullResult();
 
-        return $result ? $result->getId():false;
+        return $result;
     }
     public function prevCase($id,$categoryId)
     {
@@ -104,7 +104,7 @@ class AppExtension extends \Twig_Extension
             ->setMaxResults(1)->orderBy('a.id','DESC');
         $result = $qb->getQuery()->getOneOrNullResult();
 
-        return $result ? $result->getId():false;
+        return $result;
     }
 
     public function nextCase($id,$categoryId)
@@ -116,7 +116,7 @@ class AppExtension extends \Twig_Extension
             ->setMaxResults(1)->orderBy('a.id','DESC');
         $result = $qb->getQuery()->getOneOrNullResult();
 
-        return $result ? $result->getId():false;
+        return $result;
     }
 
 }

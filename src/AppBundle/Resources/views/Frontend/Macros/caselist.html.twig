@@ -1,14 +1,21 @@
 {% macro caselist(cases) %}
-  <section class="caselist content active" style="width: 1595px;">
-    <ul class="items list-inline" style="margin-left: 137px;">
-      {% for item in cases %}
-        <li>
-          <a href="{{ path('case_info',{id: item.id}) }}" target="_blank"><div class="shade"><u></u></div>
-            <img style="max-height: 176px;max-width: 300px;" src="{{ parameter('img_prefix') }}{{ item.thumbnail }}" alt="{{ item.title }}" class="img-responsive">
-            <p>网站设计<br><strong>{{ item.title }}</strong><br>{% for tag in item.tags %}{{ tag.name }}{% if not loop.last %},{% endif %}{% endfor %}</p><div class="bg"><u></u></div></a>
+    <div class="pro-box">
+        <ul class="met-page-ajax">
+        {% for item in cases %}
+        <li class="case-bin pro" style="width:320px;">
+            <a href="{{ path('case_info',{id: item.id}) }}" title="{{ item.title }}">
+                <font>
+                    <b></b>
+                    <img src="{{ item.thumbnail }}" title="{{ item.title }}" alt="{{ item.title }}" data-original="{{ item.thumbnail }}">
+                </font>
+                <span>
+                    <h3>{{ item.title }}</h3>
+                    {% if item.showPrice %}<p>套餐价格: {{ item.price }}</p>{% endif %}
+                </span>
+            </a>
         </li>
-      {% endfor %}
-    </ul>
-    {{ knp_pagination_render(cases,'@Partial/sliding_frontend.html.twig') }}
-  </section>
+        {% endfor %}
+        </ul>
+        {{ knp_pagination_render(cases,'@Partial/sliding_frontend.html.twig') }}
+    </div>
 {% endmacro %}

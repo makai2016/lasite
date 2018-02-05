@@ -22,9 +22,9 @@ class CaseController extends AbstractController
     public function postCaseAction(Request $request)
     {
         try{
-            $tagPeer = $this->get('app.tag_peer');
+            /*$tagPeer = $this->get('app.tag_peer');
             $tags = explode(',',$request->request->get('tags'));
-            TagPeer::checkTags($tags);
+            TagPeer::checkTags($tags);*/
 
             $case = new Cases();
             $data = array_merge($request->request->all(),$request->files->all());
@@ -35,15 +35,15 @@ class CaseController extends AbstractController
             }
             $this->getManager()->beginTransaction();
             $this->save($case);
-            $tagPeer->setCaseTag($case->getId(),$tags);
+            /*$tagPeer->setCaseTag($case->getId(),$tags);*/
             $this->getManager()->commit();
 
             return ;
         }catch (ValidationException $e) {
             return $this->handleView($this->errorValidate($e));
-        }catch (TagPeerException $e){
+        }/*catch (TagPeerException $e){
             return $this->error(['message'=>$e->getMessage()]);
-        }catch (AppException $e){
+        }*/catch (AppException $e){
             return $this->error(['message'=>$e->getMessage()]);
         }catch (\Exception $e){
             $this->getManager()->rollback();
@@ -55,9 +55,9 @@ class CaseController extends AbstractController
         $case = $this->getManager()->getRepository('AppBundle:Cases')->find($id);
         if(!$case){throw $this->createNotFoundException();}
         try{
-            $tagPeer = $this->get('app.tag_peer');
+            /*$tagPeer = $this->get('app.tag_peer');
             $tags = explode(',',$request->request->get('tags'));
-            TagPeer::checkTags($tags);
+            TagPeer::checkTags($tags);*/
 
             $data = array_merge($request->request->all(),$request->files->all());
             $this->mapping($case,$data);
@@ -67,15 +67,15 @@ class CaseController extends AbstractController
             }
             $this->getManager()->beginTransaction();
             $this->save($case);
-            $tagPeer->setCaseTag($case->getId(),$tags);
+            /*$tagPeer->setCaseTag($case->getId(),$tags);*/
             $this->getManager()->commit();
 
             return ;
         }catch (ValidationException $e) {
             return $this->handleView($this->errorValidate($e));
-        }catch (TagPeerException $e){
+        }/*catch (TagPeerException $e){
             return $this->error(['message'=>$e->getMessage()]);
-        }catch (AppException $e){
+        }*/catch (AppException $e){
             return $this->error(['message'=>$e->getMessage()]);
         }catch (\Exception $e){
             $this->getManager()->rollback();

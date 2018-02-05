@@ -476,6 +476,7 @@ $(document).ready(function(e) {
             $('section[role=main],header[role=heading]').removeClass('active');
         }
         $('.sidebar-icon').click(function(){
+            console.log(123)
             if($(this).hasClass('active')){
                 $(this).removeClass('active');
                 $('section[role=main],header[role=heading]').removeClass('active');

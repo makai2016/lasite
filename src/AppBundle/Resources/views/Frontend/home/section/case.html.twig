@@ -25,7 +25,7 @@
 
 					  <p>网站设计</p>
 					  <h3 style="margin-top: 15px;">{{ item.title }}</h3>
-					  <p>{% for tag in item.tags %}{{ tag.name }}{% if not loop.last %},{% endif %}{% endfor %}</p>
+					  <p>套餐价格: &nbsp;&nbsp;&nbsp;{% if item.showPrice %}{{ item.price }}{% else %}***{% endif %}</p>
 					</span>
                 </a>
               </li>

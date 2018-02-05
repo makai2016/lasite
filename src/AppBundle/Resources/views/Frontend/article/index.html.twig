@@ -1,27 +1,83 @@
 {% extends '@Layouts/frontendFrame.html.twig' %}
-{% from '@Frontend/Macros/artlist.html.twig' import artlist %}
 {% from '@Frontend/partial/toolbar.html.twig' import toolbar %}
+{% from '@Frontend/Macros/artlist.html.twig' import artlist %}
 {% block title %}
-  {% set _route = app.request.attributes.get('_route') %}
-  {% if _route =='article_list' %}
-    <title>文章动态 - 网站建设|北京网站制作|北京网站设计</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-  {% elseif _route == 'article_category' %}
-    <title>{{ current.name }} - 北京网站建设|北京网站制作|北京网站设计</title>
-    <meta name="keywords" content="{{ current.keywords }}">
-    <meta name="description" content="{{ current.description }}">
-  {% endif %}
-{% endblock %}
-{% block content %}
-  {% include '@Frontend/partial/inner_header.html.twig' %}
-  {{ toolbar(categorys,1) }}
-  {{ artlist(articles) }}
+    {% set _route = app.request.attributes.get('_route') %}
+    {% if _route =='article_list' %}
+      <title>文章动态 - 网站建设|北京网站制作|北京网站设计</title>
+      <meta name="keywords" content="案例详情">
+      <meta name="description" content="案例详情">
+    {% elseif _route == 'case_category' %}
+      <title>{{ current.name }}行业网站建设案例 - 北京网站建设|北京网站制作|北京网站设计</title>
+      <meta name="keywords" content="{{ current.keywords }}">
+      <meta name="description" content="{{ current.description }}">
+    {% endif %}
 {% endblock %}
 
+{% block content %}
+{% include '@Frontend/partial/header.html.twig' %}
+
+<section role="main" class="subpage active">
+  <div class="main-box">
+      {{ toolbar(categorys,1) }}
+    <div class="information-box">
+        {{ artlist(articles) }}
+    </div>
+    <button type="button" class="btn btn-icon btn-primary btn-squared met-scroll-top hide">
+      <i class="icon wb-chevron-up" aria-hidden="true"></i>
+    </button>
+  </div>
+</section>
+{% endblock %}
 {% block css %}
-<link href="{{ asset('static/css/base.css','frontend') }}" rel="stylesheet">
+    <!--start-->
+    <link rel="stylesheet" href="{{ asset('static/css/index.css','frontend') }}">
+    <!--web-icons-->
+    <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css','frontend') }}">
+    {#<link rel="stylesheet" href="{{ asset('static/css/swiper-3.3.1.min.css','frontend') }}">#}
+    <link rel="stylesheet" href="{{ asset('static/css/webui-popover.min.css','frontend') }}">
+    <link rel="stylesheet" href="{{ asset('static/css/metinfo.css','frontend') }}">
+    <!--end-->
 {% endblock %}
 {% block js %}
-<script src="{{ asset('static/js/inner.js') }}"></script>
+    <script src="{{ asset('static/js/breakpoints.min.js','frontend') }}"></script>
+    <script src="{{ asset('static/js/core.min.js','frontend') }}"></script>
+    {#<script src="{{ asset('static/js/site.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/modernizr.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/formValidation.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/jquery.placeholder.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/jquery.asScrollable.all.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/jquery.asScrollable.all.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/alertify.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/jquery.appear.js','frontend') }}"></script>#}
+    <script src="{{ asset('static/js/jquery.webui-popover.min.js','frontend') }}"></script>
+    {#<script src="{{ asset('static/js/masonry.pkgd.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/jquery.bootstrap-touchspin.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/spin.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/ladda.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/tablesaw.js','frontend') }}"></script>#}
+    <script src="{{ asset('static/js/swiper-3.3.1.jquery.min.js','frontend') }}"></script>
+    {#<script src="{{ asset('static/js/jquery.lazyload.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/lightgallery-all.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/jquery.matchHeight-min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/slick.min.js','frontend') }}"></script>#}
+    <script src="{{ asset('static/js/jquery.cookie.js','frontend') }}"></script>
+    {#<script src="{{ asset('static/js/isotope.pkgd.min.js','frontend') }}"></script>#}
+    <script src="{{ asset('static/js/metinfo.js','frontend') }}"></script>
+    <script>
+        $('.sidebar-icon').click(function(){
+            if($(this).hasClass('active')){
+                $(this).removeClass('active');
+                $('section[role=main],header[role=heading]').removeClass('active');
+                $.cookie('head_active','current',{path:'/'});
+            }else{
+                $(this).addClass('active');
+                $('section[role=main],header[role=heading]').addClass('active');
+                $.cookie('head_active','active',{path:'/'});
+            }
+            window.setTimeout(function(){
+                if($('#met-grid').length>0) MetAnimOnScroll();
+            },500);
+        });
+    </script>
 {% endblock %}

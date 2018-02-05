@@ -3,59 +3,27 @@
   {% set _params = app.request.get('_route_params') %}
   {% set _route = app.request.attributes.get('_route') %}
 
-  <section class="toolbar {% if _route=='case_info' %}show{% endif %} active">
-    <a href="{{ path('home') }}" title="返回首页" class="homelink">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-    </a>
-    <span class="switch glyphicon glyphicon-chevron-left"></span>
-    <div class="logo">
-      <a href="{{ path('home') }}"><img src="{{ asset('static/images/logo_article.png','frontend') }}" class="img-responsive"></a>
+  <div class="sidebar-header {% if _route != 'case_info' %}active{% endif %}">
+    <div class="sidebar-icon active">
+      <i class="fa fa-arrow-left"></i>
+      <i class="fa fa-th-list"></i>
     </div>
-    {% if _route =='article_info' %}
-      {% set _prev = prevArticle(_params.id,info.categoryId) %}
-      {% set _next = nextArticle(_params.id,info.categoryId) %}
-      <div class="btnList">
-        <div class="link btn-group">
-          <a href="{{ path('article_list') }}" class="btn btn-default">文章列表</a>
-        </div>
-        <div class="link btn-group">
-          <a href="{% if _prev %}{{ path('article_info',{id: _prev}) }}{% else %}javascript:void(0);{% endif %}" class="btn btn-default {% if not _prev %}disabled{% endif %}"><span class="glyphicon glyphicon-arrow-left"></span>PREV</a>
-        </div>
-        <div class="link btn-group">
-          <a href="{% if _next %}{{ path('article_info',{id: _next}) }}{% else %}javascript:void(0);{% endif %}" class="btn btn-default {% if not _next %}disabled{% endif %}">NEXT<span class="glyphicon glyphicon-arrow-right"></span></a>
-        </div>
-      </div>
-    {% elseif _route == 'case_info' %}
-      {% set _prev = prevCase(_params.id,info.categoryId) %}
-      {% set _next = nextCase(_params.id,info.categoryId) %}
-      <div class="btnList">
-        <div class="link btn-group">
-          <a href="{{ path('case_list') }}" class="btn btn-default">作品集</a>
-        </div>
-        <div class="link btn-group">
-          <a href="{% if _prev %}{{ path('case_info',{id: _prev}) }}{% else %}javascript:void(0);{% endif %}" class="btn btn-default {% if not _prev %}disabled{% endif %}"><span class="glyphicon glyphicon-arrow-left"></span>PREV</a>
-        </div>
-        <div class="link btn-group">
-          <a href="{% if _next %}{{ path('case_info',{id: _next}) }}{% else %}javascript:void(0);{% endif %}" class="btn btn-default {% if not _next %}disabled{% endif %}">NEXT<span class="glyphicon glyphicon-arrow-right"></span></a>
-        </div>
-      </div>
-    {% else %}
-      <div class="category btn-group">
-        <a href="{% if type ==1 %}{{ path('article_list') }}{% elseif type==2 %}{{ path('case_list') }}{% endif %}" class="btn btn-default {% if not _params %}btn-primary{% endif %}">全部</a>
+    <div class="sidebar-nav">
+      <ol>全部</ol>
+      <ul>
+        <li class="{% if _route in ['article_list','case_list'] %}active{% endif %}">
+          <a href="{% if type==1 %}{{ path('article_list') }}{% elseif type==2 %}{{ path('case_list') }}{% endif %}" title="全部">全部</a>
+        </li>
         {% for item in categorys %}
-          <a href="{{ path(_croute, {category: item.route}) }}" class="btn btn-default {% if item.route in _params %}btn-primary{% endif %}">{{ item.name }}</a>
+        <li class="{% if (_route==_croute and _params.category==item.route) or (info and info.categoryId==item.id) %}active{% endif %}">
+          <a href="{{ path(_croute,{category: item.route}) }}" title="{{ item.name }}">
+              {{ item.name }}
+          </a>
+        </li>
         {% endfor %}
-      </div>
-      <div class="btn-group mini">
-        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">全部 <span class="caret"></span></button>
-        <ul class="dropdown-menu dropdown-menu-right">
-          <li><a href="{% if type ==1 %}{{ path('article_list') }}{% elseif type==2 %}{{ path('case_list') }}{% endif %}">全部</a></li>
-          {% for item in categorys %}
-            <li><a href="{{ path(_croute, {category: item.route}) }}">{{ item.name }}</a></li>
-          {% endfor %}
-        </ul>
-      </div>
-    {% endif %}
-  </section>
+
+      </ul>
+    </div>
+  </div>
 {% endmacro %}
 

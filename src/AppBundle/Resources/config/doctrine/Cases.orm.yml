@@ -21,13 +21,11 @@ AppBundle\Entity\Cases:
             nullable: false
             length: 255
             fixed: false
-            comment: 标题
         thumbnail:
             type: string
             nullable: true
             length: 255
             fixed: false
-            comment: 缩略图
         banner:
             type: string
             nullable: true
@@ -38,32 +36,36 @@ AppBundle\Entity\Cases:
             nullable: true
             length: 65535
             fixed: false
-            comment: 介绍
         content:
             type: text
             nullable: false
             length: 65535
             fixed: false
-            comment: 内容
         deleted:
             type: boolean
             nullable: false
-            comment: 删除的
-            default: '0'
         recommend:
             type: boolean
             nullable: false
-            comment: 推荐的
-            default: '0'
         published:
             type: boolean
             nullable: true
-            comment: 发布的
-            default: '1'
         createdAt:
             type: datetime
             nullable: false
-            comment: 创建时间
             column: created_at
+        price:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: 价格
+            default: '1'
+        showPrice:
+            type: boolean
+            nullable: false
+            comment: 显示价格
+            default: '0'
+            column: show_price
     lifecycleCallbacks:
         prePersist: [createdAtHandle]

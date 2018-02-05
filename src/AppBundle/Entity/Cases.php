@@ -54,6 +54,12 @@ class Cases extends AbstractEntity
      */
     private $published = '1';
 
+    /** @var string  */
+    private $price = '1';
+
+    /** @var integer  */
+    private $showPrice = 0;
+
     /**
      * @var \DateTime
      */
@@ -294,6 +300,50 @@ class Cases extends AbstractEntity
         $this->createdAt = $createdAt;
 
         return $this;
+    }
+
+    /**
+     * Set price
+     *
+     * @param $price
+     *
+     * @return Cases
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return string
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set showPrice
+     *
+     * @param $showPrice
+     *
+     * @return Cases
+     */
+    public function setShowPrice($showPrice)
+    {
+        $this->showPrice = $showPrice;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getShowPrice()
+    {
+        return $this->showPrice;
     }
 
     /**
