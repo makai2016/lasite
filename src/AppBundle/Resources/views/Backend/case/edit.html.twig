@@ -32,6 +32,13 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="introduce" class="col-sm-2 control-label">介绍</label>
+                            <div class="col-sm-9">
+                                <textarea name="introduce" id="introduce" class="form-control">{{ case.introduce }}</textarea>
+                                <span class="help-block introduce-msg"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="thumbnail" class="col-sm-2 control-label">缩略图</label>
                             <div class="col-sm-8 col-md-8">
                                 <input type="file" name="image" id="image">
@@ -46,10 +53,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="introduce" class="col-sm-2 control-label">介绍</label>
+                            <label for="video" class="col-sm-2 control-label">视频</label>
                             <div class="col-sm-9">
-                                <textarea name="introduce" style="border:1px solid #333;" id="introduce" class="form-control">{{ case.introduce }}</textarea>
-                                <span class="help-block introduce-msg"></span>
+                                <input type="text" value="{{ case.video }}" name="video" class="form-control" id="video" placeholder="视频">
+                                <span class="help-block video-msg"></span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -66,6 +73,14 @@
                                 <span class="help-block flow-msg"></span>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="rank" class="col-sm-2 control-label">排序</label>
+                            <div class="col-sm-5">
+                                <input type="text" name="rank" value="{{ case.rank }}" class="form-control" id="rank" placeholder="排序" >
+                                <span class="help-block rank-msg"></span>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label for="published" class="col-sm-3 control-label"><input type="checkbox" value="1" class="minimal" name="published" {% if case.published %}checked{% endif %}>发布</label>
                             <label for="recommend" class="col-sm-1 control-label"><input type="checkbox" value="1" class="minimal" name="recommend" {% if case.recommend %}checked{% endif %}>推荐</label>

@@ -26,7 +26,7 @@
         <font>
           发布日期
           <i class="fa fa-clock-o"></i>
-          2016-12-10 08:41:54
+          {{ case.createdAt.format('Y-m-d H:i:s') }}
         </font>
           <div>
               {{ case.introduce|raw }}
@@ -39,6 +39,12 @@
     {% endif %}
   </span>
       </div>
+	  {% if case.video %}
+	  <div class="product-title">视频欣赏</div>
+      <div class="product-content">
+          <video src="{{ case.video }}" controls="controls" width="1000px" style="border:#ffffff 20px solid;border-bottom:none">您的浏览器不支持 video 标签。</video>
+      </div>
+	  {% endif %}
       <div class="product-title">详细信息</div>
       <div class="product-content">
           {{ case.content|raw }}
@@ -122,7 +128,7 @@
     {#<script src="{{ asset('static/js/isotope.pkgd.min.js','frontend') }}"></script>#}
   <script src="{{ asset('static/js/metinfo.js','frontend') }}"></script>
   <script>
-      $('.sidebar-icon').click(function(){
+      $('.sidebar-icon').on('click',function(){
           if($(this).hasClass('active')){
               $(this).removeClass('active');
               $('section[role=main],header[role=heading]').removeClass('active');
@@ -136,5 +142,6 @@
               if($('#met-grid').length>0) MetAnimOnScroll();
           },500);
       });
+	  $('.sidebar-icon').click()
   </script>
 {% endblock %}

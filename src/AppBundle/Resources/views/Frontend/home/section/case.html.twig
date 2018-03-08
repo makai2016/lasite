@@ -1,5 +1,5 @@
 <div class="window-bin" data-hash="case">
-  <div class="window-back swiper-lazy" data-title="案例" data-background="{{ asset('static/images/wp3.jpg','frontend') }}">
+  <div class="window-back swiper-lazy" data-title="作品" data-background="{{ asset('static/images/wp3.jpg','frontend') }}">
     <div class="hidden visible-sm-block visible-md-block">
     <div class="case-ctrl">
       <div class="ctrl-box ctrl-left"><i class="fa fa-angle-left"></i></div>
@@ -10,7 +10,7 @@
       <div class="table-cell">
         <div class="title-box">
           <h1>CASE</h1>
-          <h2>案例展示</h2>
+          <h2>作品展示</h2>
         </div>
         <div class="case-box">
           <ul class="case-cut">
@@ -23,16 +23,16 @@
                   </font>
                   <span>
 
-					  <p>网站设计</p>
+					  <p>{{ item.category.name }}</p>
 					  <h3 style="margin-top: 15px;">{{ item.title }}</h3>
-					  <p>套餐价格: &nbsp;&nbsp;&nbsp;{% if item.showPrice %}{{ item.price }}{% else %}***{% endif %}</p>
+					  <!--<p>{% for tag in item.tags %}{{ tag.name }}{% if not loop.last %},{% endif %}{% endfor %}</p>-->
 					</span>
                 </a>
               </li>
             {% endfor %}
           </ul>
         </div>
-        <div class="case-more"><a href="{{ path('case_list') }}" title="设计案例">更多设计案例</a></div>
+        <div class="case-more"><a href="{{ path('case_list') }}" title="查看更多作品">查看更多作品</a></div>
       </div>
     </div>
   </div>

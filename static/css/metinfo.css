@@ -5836,7 +5836,7 @@ footer p {
 
 
 /*other.css*/
-html,body{height:100%; color:#393939;}
+html,body{height:100%; color:#000;}
 a{color:#393939; }
 a:focus,a:hover,a:active{color:#00dfb9; text-decoration:none;}
 a:-webkit-any-link{text-decoration:none;}
@@ -5977,7 +5977,7 @@ transform:translate(0,-50%); -moz-transform:translate(0,-50%); -ms-transform:tra
 .window-head .head-right i{color:#00dfb9; font-size:20px; border:2px solid #00dfb9; width:28px; height:28px; text-align:center;
 line-height:26px; border-radius:50%; float:left; margin-right:10px; overflow:hidden;
 transition:.3s; -moz-transition:.3s; -ms-transition:.3s; -o-transition:.3s; -webkit-transition:.3s;}
-.window-head .head-right b{color:#00dfb9; font-weight:bold; letter-spacing:1px; font-size:26px; height:28px; line-height:26px;
+.window-head .head-right b{font-family:Helvetica; color:#fff; font-weight:bold; letter-spacing:1px; font-size:26px; height:28px; line-height:31px;
 float:left; display:block;
 transition:.3s; -moz-transition:.3s; -ms-transition:.3s; -o-transition:.3s; -webkit-transition:.3s;}
 .window-head .head-rights{position:absolute; right:2.5%; top:50%; height:28px;
@@ -6109,7 +6109,7 @@ transition:.3s; -moz-transition:.3s; -ms-transition:.3s; -o-transition:.3s; -web
 .banner-ctrl{display:none;}}
 .banner-write{position:relative; z-index:992; word-break:break-all; padding:0 10px;}
 .banner-write *{max-width:100%;}
-.banner-write .w1{font-family:Microsoft JhengHei;color:#fff;font-size:263px;display:inline-block;line-height:0;
+.banner-write .w1{font-family:Helvetica;color:#fff;font-size:263px;display:inline-block;line-height:0;
 transition:.3s .4s; -webkit-transition:.3s .4s; -moz-transition:.3s .4s; -ms-transition:.3s .4s; -o-transition:.3s .4s;
 transform:translateX(-150px) scale(.8); -moz-transform:translateX(-150px) scale(.8); -ms-transform:translateX(-150px) scale(.8);
 -o-transform:translateX(-150px) scale(.8); -webkit-transform:translateX(-150px) scale(.8); opacity:0;}
@@ -6189,8 +6189,8 @@ transition:.6s .6s; -webkit-transition:.6s .6s; -moz-transition:.6s .6s; -ms-tra
 
 
 .title-box{}
-.title-box h1{font-size:50px; letter-spacing:-3px; font-family:TechnicLite; color:#00dfb9; line-height:35px; margin:0 0 15px 0; padding:0;}
-.title-box h2{font-size:25px; letter-spacing:3px; margin:0; padding:0;}
+.title-box h1{font-size:38px; font-family:Helvetica; color:#00dfb9; line-height:35px; margin:0 0 15px 0; padding:0;}
+.title-box h2{font-size:26px; margin:0; padding:0;}
 @media (max-width:767px){
 .title-box h1{font-size:30px; margin:0 0 5px 0;}
 .title-box h2{font-size:18px;}}
@@ -6233,7 +6233,7 @@ transform:translate(-50%,-50%); -moz-transform:translate(-50%,-50%); -ms-transfo
 border:5px solid #00dfb9; border-radius:50%; text-align:center; color:#00dfb9; background:rgba(255,255,255,.1);
 transition:.3s; -webkit-transition:.3s; -moz-transition:.3s; -ms-transition:.3s; -o-transition:.3s;
 transform:translateY(0); -moz-transform:translateY(0); -ms-transform:translateY(0); -webkit-transform:translateY(0); -o-transform:translateY(0);}
-.icon-box ul li h3{display:block; font-size:16px; color:#333; margin:0; padding:0; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;
+.icon-box ul li h3{display:block; font-size:16px; color:#000; margin:0; padding:0; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;
 transition:.3s; -webkit-transition:.3s; -moz-transition:.3s; -ms-transition:.3s; -o-transition:.3s;
 transform:translateY(0); -moz-transform:translateY(0); -ms-transform:translateY(0); -webkit-transform:translateY(0); -o-transform:translateY(0);}
 .icon-box ul li p{display:none;}
@@ -6247,7 +6247,7 @@ transition:.3s; -webkit-transition:.3s; -moz-transition:.3s; -ms-transition:.3s;
 .icon-box.icon-type-0 ul li:hover h3{color:#fff; transform:translateY(-60px); -moz-transform:translateY(-60px); -ms-transform:translateY(-60px);
 -o-transform:translateY(-60px); -webkit-transform:translateY(-60px);}
 .icon-box.icon-type-0 ul li:hover p{
-transition:.3s .2s; -webkit-transition:.3s .2s; -moz-transition:.3s .2s; -ms-transition:.3s .2s; -o-transition:.3s .2s; opacity:.8;}
+transition:.3s .2s; -webkit-transition:.3s .2s; -moz-transition:.3s .2s; -ms-transition:.3s .2s; -o-transition:.3s .2s; opacity:1;}
 }
 @media (max-width:1200px){
 .icon-box{padding:40px 0 50px 0;}
@@ -6328,7 +6328,7 @@ border:500px solid rgba(0,0,0,.6); left:50%; top:50%; margin:-525px 0 0 -525px;}
 .case-bin font b:after{position:absolute; content:''; width:50px; height:50px; border-radius:50%; background:rgba(47,208,181,.6);
 left:50%; top:50%; margin:-25px 0 0 -25px;}
 .case-bin font img{display:block; width:100%;}
-.case-bin span{display:block; position:relative; z-index:1; background:rgba(255,255,255,.5); text-align:left; padding:15px 20px;}
+.case-bin span{display:block; position:relative; z-index:1; background:rgba(255,255,255,.5); text-align:left; padding:15px 20px 10px 20px;}
 .case-bin span:after{position:absolute; bottom:0; height:2px; left:0; right:0; content:''; z-index:1; background:#00dfb9;
 transition:.2s ease-in-out; -moz-transition:.2s ease-in-out; -ms-transition:.2s ease-in-out;
 -o-transition:.2s ease-in-out; -webkit-transition:.2s ease-in-out;}
@@ -6345,11 +6345,10 @@ font-family: "宋体";
 .case-bin a:hover span h3{color:#fff;}
 .case-bin a:hover span p{color:#fff;}
 .case-more{margin-top:30px;}
-.case-more a{border:1px dotted #00dfb9; font-family:TechnicLite; color:#00dfb9; font-size:26px; padding:0 20px;
+.case-more a{border:2px dotted #fff; font-family:微软雅黑; color:#fff; font-size:24px; padding:0 40px;
 transition:.3s ease-in-out; -moz-transition:.3s ease-in-out; -ms-transition:.3s ease-in-out;
--o-transition:.3s ease-in-out; -webkit-transition:.3s ease-in-out;
-font-weight:bold; display:inline-block;}
-.case-more a:hover{background:#00dfb9; color:#fff;}
+-o-transition:.3s ease-in-out; -webkit-transition:.3s ease-in-out; display:inline-block; background:#00dfb9;}
+.case-more a:hover{border:2px dotted #00dfb9; background:#fff; color:#00dfb9;}
 @media (max-width:1599px){
 .case-box{width:940px;} }
 @media (max-width:1200px){
@@ -6421,8 +6420,8 @@ transition:.5s ease-in-out; -moz-transition:.5s ease-in-out; -ms-transition:.5s 
 transition:.5s ease-in-out; -moz-transition:.5s ease-in-out; -ms-transition:.5s ease-in-out;
 -o-transition:.5s ease-in-out; -webkit-transition:.5s ease-in-out;}
 .product-descript span a:hover{background:#393939;}
-.product-content{padding:30px 60px;}
-.product-content img{max-width:100%;}
+.product-content{padding:30px 00px;margin:0 auto;width:1000px;}
+.product-content img{max-width:100%;border:#fff 20px solid;}
 @media (max-width:1200px){
 .product-title{margin:40px 0 0 30px;}
 .show-box{margin:40px 30px;}

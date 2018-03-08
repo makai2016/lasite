@@ -69,6 +69,16 @@ class Cases extends AbstractEntity
      * @var integer
      */
     private $id;
+	
+	/**
+	 * @var string
+	 */
+	private $video;
+
+    /**
+     * @var integer
+     */
+	private $rank =1;
 
     /**
      * @var  Category
@@ -354,6 +364,46 @@ class Cases extends AbstractEntity
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+	
+	/**
+	 * @return string
+	*/
+	public function getVideo()
+	{
+	    return $this->video;
+	}
+	
+	/**
+	 * @return Cases
+	*/
+	public function setVideo($video)
+	{
+		$this->video = $video;
+		return $this;
+	}
+
+    /**
+     * Get rank
+     *
+     * @return int
+     */
+	public function getRank()
+    {
+        return $this->rank;
+    }
+
+    /**
+     * Set rank
+     *
+     * @param $rank
+     *
+     * @return Cases
+     */
+    public function setRank($rank)
+    {
+        $this->rank = $rank;
+        return $this;
     }
 
     /**

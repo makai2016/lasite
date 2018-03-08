@@ -10,7 +10,7 @@
                 </font>
                 <span>
                     <h3>{{ item.title }}</h3>
-                    {% if item.showPrice %}<p>套餐价格: {{ item.price }}</p>{% endif %}
+                    <p>{% if item.showPrice %}套餐价格: {{ item.price }}{% else %}<BR>{% endif %}</p>
                 </span>
             </a>
         </li>

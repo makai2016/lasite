@@ -59,7 +59,7 @@ class CaseController extends AbstractController
         $qb = $this->getQueryBuilder();
         $qb->select('c')
             ->from('AppBundle:Cases','c')
-            ->where('c.deleted=0')->orderBy('c.id','DESC')
+            ->where('c.deleted=0')->orderBy('c.rank')
             ->orderBy('c.id','DESC');
         if($category instanceof Category){
             $qb->andWhere("c.categoryId={$category->getId()}");

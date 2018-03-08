@@ -21,11 +21,12 @@ class DefaultController extends AbstractController
 
     private function _hotcase($limit=3)
     {
-        $items = $items = $this->getManager()->getRepository('AppBundle:Cases')->homeCases($limit);
+        $items = $this->getManager()->getRepository('AppBundle:Cases')->homeCases($limit);
         $tagPeer = $this->get('app.tag_peer');
         array_walk($items,function (&$item,$key)use ($tagPeer){
             $f = $tagPeer->getCaseTag($item->getId());
-            $item->setTags($f);
+			$c = $this->getManager()->getRepository('AppBundle:Category')->find($item->getCategoryId());
+            $item->setTags($f)->setCategory($c);
         });
         return $items;
     }

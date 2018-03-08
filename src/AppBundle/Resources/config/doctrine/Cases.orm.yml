@@ -67,5 +67,16 @@ AppBundle\Entity\Cases:
             comment: 显示价格
             default: '0'
             column: show_price
+        video:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        rank:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 排序
+            default: '1'
     lifecycleCallbacks:
         prePersist: [createdAtHandle]

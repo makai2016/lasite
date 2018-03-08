@@ -17,6 +17,7 @@
                             <th>标题</th>
                             <th>缩略图</th>
                             <th>分类名称</th>
+                            <th>排序</th>
                             <th style="width: 200px; text-align: center">操作</th>
                         </tr>
                         {% for item in cases %}
@@ -25,6 +26,7 @@
                                 <td>{{ item.title }}</td>
                                 <td>{% if item.thumbnail %}<img class="iner" src="{{ parameter('img_prefix') }}{{ item.thumbnail }}">{% endif %}</td>
                                 <td>{{ item.category.name }}</td>
+                                <td>{{ item.rank }}</td>
                                 <td>
                                     <a href="{{ path('b_case_edit',{id: item.id}) }}" class="btn bg-olive btn-sm">编辑</a>
                                     <button data-url="{{ path('bapi_delete_case',{id: item.id}) }}" type="button" class="btn bg-maroon btn-sm del-x">删除</button>

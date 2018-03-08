@@ -31,6 +31,13 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="introduce" class="col-sm-2 control-label">介绍</label>
+                            <div class="col-sm-9">
+                                <textarea name="introduce" id="introduce" class="form-control"></textarea>
+                                <span class="help-block introduce-msg"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="thumbnail" class="col-sm-2 control-label">缩略图</label>
                             <div class="col-sm-3">
                                 <input type="file" name="image" id="image">
@@ -46,10 +53,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="introduce" class="col-sm-2 control-label">介绍</label>
+                            <label for="video" class="col-sm-2 control-label">视频</label>
                             <div class="col-sm-9">
-                                <textarea name="introduce" id="introduce" class="form-control"></textarea>
-                                <span class="help-block introduce-msg"></span>
+                                <input type="text" value="" name="video" class="form-control" id="video" placeholder="视频">
+                                <span class="help-block video-msg"></span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -63,7 +70,14 @@
                             <label for="price" class="col-sm-2 control-label">价格</label>
                             <div class="col-sm-5">
                                 <input type="text" name="price" value="" class="form-control" id="price" placeholder="价格" >
-                                <span class="help-block flow-msg"></span>
+                                <span class="help-block price-msg"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="rank" class="col-sm-2 control-label">排序</label>
+                            <div class="col-sm-5">
+                                <input type="text" name="rank" value="1" class="form-control" id="rank" placeholder="排序" >
+                                <span class="help-block rank-msg"></span>
                             </div>
                         </div>
                         <div class="form-group">
