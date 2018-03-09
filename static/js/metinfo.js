@@ -198,13 +198,13 @@ $(document).ready(function(e) {
                 width: 1260,
                 loop: case_number>=4,
                 autoplay: false,
-                slidesPerView: 3,
+                slidesPerView: 4,
                 spaceBetween: 20,
                 grabCursor: true,
                 breakpoints: {
-                    1599: { width:940, slidesPerView:3, loop:case_number>=3 },
-                    1200: { width:620, slidesPerView:2, loop:case_number>=2 },
-                    767: {  width:460, slidesPerView:2, loop:case_number>=3, spaceBetween: 30 },
+                    1599: { width:940, slidesPerView:4, loop:case_number>=4 },
+                    1200: { width:620, slidesPerView:4, loop:case_number>=4 },
+                    767: {  width:460, slidesPerView:2, loop:case_number>=2, spaceBetween: 30 },
                     479: {  width:300, slidesPerView:1, loop:case_number>=1 },
                     400: {  width:230, slidesPerView:1, loop:case_number>=1 }
                 }
@@ -476,7 +476,6 @@ $(document).ready(function(e) {
             $('section[role=main],header[role=heading]').removeClass('active');
         }
         $('.sidebar-icon').click(function(){
-            console.log(123)
             if($(this).hasClass('active')){
                 $(this).removeClass('active');
                 $('section[role=main],header[role=heading]').removeClass('active');

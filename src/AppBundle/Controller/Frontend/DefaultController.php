@@ -19,7 +19,7 @@ class DefaultController extends AbstractController
     }
 
 
-    private function _hotcase($limit=3)
+    private function _hotcase($limit=4)
     {
         $items = $this->getManager()->getRepository('AppBundle:Cases')->homeCases($limit);
         $tagPeer = $this->get('app.tag_peer');

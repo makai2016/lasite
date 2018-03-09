@@ -11,7 +11,7 @@
           <a href="{{ path(route, query|merge({(pageParameterName): page})) }}{{ (auchor is defined) ? auchor : ''}}">{{ page }}</a>
         </li>
       {% else %}
-        <li><a href="#">{{ page }}</a></li>
+        <li class="active"><a href="#">{{ page }}</a></li>
       {% endif %}
     {% endfor %}
     {% if next is defined %}
