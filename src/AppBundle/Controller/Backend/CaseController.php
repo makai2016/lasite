@@ -30,8 +30,10 @@ class CaseController extends AbstractController
         $qb = $this->getQueryBuilder();
         $qb->select('c')
             ->from('AppBundle:Cases','c')
-            ->where('c.deleted=0')->orderBy('c.id','DESC');
-        $cases = $this->pagination($qb,$request->query->getInt('page',1),10);
+            ->where('c.deleted=0')
+            ->orderBy('c.rank')
+            ->addOrderBy('c.id','DESC');
+        $cases = $this->pagination($qb,$request->query->getInt('page',1),30);
         $items = $cases->getItems();
         array_walk($items,function (&$item,$key){
             $c=$this->getManager()->getRepository('AppBundle:Category')->find($item->getCategoryId());
