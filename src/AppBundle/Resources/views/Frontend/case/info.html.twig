@@ -15,7 +15,9 @@
         <div class="banner-click"><i class="fa fa-arrows-alt"></i></div>
         <div class="met-banner " data-height="450|350|250">
           <div class="slick-slide">
+              {% if case.banner %}
             <img class="cover-image" src="{{ case.banner }}" srcset='' alt="{{ case.title }}">
+              {% endif %}
           </div>
         </div>
       </div>
