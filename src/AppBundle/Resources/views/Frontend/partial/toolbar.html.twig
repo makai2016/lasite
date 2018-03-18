@@ -9,13 +9,13 @@
       <i class="fa fa-th-list"></i>
     </div>
     <div class="sidebar-nav">
-      <ol>{% if type==1 %}全部{% elseif type==2 %}作品集{% endif %}</ol>
+      <ol>{% if type==1 %}分类{% elseif type==2 %}分类{% endif %}</ol>
       <ul>
         <li class="{% if _route in ['article_list','case_list'] %}active{% endif %}">
 		{% if type==1 %}
           <a href="{{ path('article_list') }}" title="全部">全部</a>
 		{% elseif type==2 %}
-		  <a href="{{ path('case_list') }}" title="作品集">作品集</a>
+		  <a href="{{ path('case_list') }}" title="全部">全部</a>
     	{% endif %}
         </li>
         {% for item in categorys %}

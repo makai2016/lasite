@@ -38,7 +38,7 @@ AppBundle\Entity\Cases:
             fixed: false
         content:
             type: text
-            nullable: false
+            nullable: true
             length: 65535
             fixed: false
         deleted:

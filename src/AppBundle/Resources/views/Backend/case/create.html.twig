@@ -40,9 +40,9 @@
                         <div class="form-group">
                             <label for="thumbnail" class="col-sm-2 control-label">缩略图</label>
                             <div class="col-sm-3">
-                                <input type="text" name="banner" value="" class="form-control" id="banner" placeholder="粘贴图片地址或下方上传文件">
+                                <input type="text" name="thumbnail" value="" class="form-control" id="thumbnail" placeholder="粘贴图片地址或下方上传文件">
                                 <input type="file" name="image" id="image">
-                                <input type="hidden" name="thumbnail" id="thumbnail">
+                                {#<input type="hidden" name="thumbnail" id="thumbnail">#}
                                 <span class="help-block thumbnail-msg">比例：300×176</span>
                             </div>
                         </div>
@@ -83,10 +83,29 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="published" class="col-sm-3 control-label"><input type="checkbox" value="1" class="minimal" name="published" checked>发布</label>
-                            <label for="recommend" class="col-sm-1 control-label"><input type="checkbox" value="1" class="minimal" name="recommend">推荐</label>
-                            <label for="show_price" class="col-sm-2 control-label" style="text-align: left;"><input type="checkbox" value="1" class="minimal" name="show_price">显示价格</label>
+                            <label for="rank" class="col-sm-2 control-label">发布</label>
+                            <div class="col-sm-1">
+                                <select class="form-control" name="published">
+                                    <option value="1">是</option>
+                                    <option value="0" selected>否</option>
+                                </select>
+                            </div>
+                            <label for="rank" class="col-sm-1 control-label">推荐</label>
+                            <div class="col-sm-1">
+                                <select class="form-control" name="recommend">
+                                    <option value="1">是</option>
+                                    <option value="0" selected>否</option>
+                                </select>
+                            </div>
+                            <label for="rank" class="col-sm-1 control-label">显示价格</label>
+                            <div class="col-sm-1">
+                                <select class="form-control" name="show_price">
+                                    <option value="1">是</option>
+                                    <option value="0" selected>否</option>
+                                </select>
+                            </div>
                         </div>
+
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">

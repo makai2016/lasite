@@ -1,9 +1,9 @@
 {% extends '@Layouts/frontendFrame.html.twig' %}
 {% from '@Frontend/partial/toolbar.html.twig' import toolbar %}
 {% block title %}
-  <title>{{ case.title }} - 网站建设|北京网站制作|北京网站设计</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="">
+  <title>{{ case.title }} - 提供基于文化创意与数字科技的整体解决方案 021-52855980</title>
+  <meta name="keywords" content="{{ case.category.keywords }}">
+  <meta name="description" content="{{ case.introduce|striptags }}">
 {% endblock %}
 {% set _pre = prevCase(case.id,case.categoryId) %}
 {% set _next = nextCase(case.id,case.categoryId) %}
@@ -44,13 +44,15 @@
 	  {% if case.video %}
 	  <div class="product-title">视频欣赏</div>
       <div class="product-content">
-          <video src="{{ case.video }}" controls="controls" width="1000px" style="border:#ffffff 20px solid;border-bottom:none">您的浏览器不支持 video 标签。</video>
+          <video src="{{ case.video }}" controls="controls" width="1000px" style="border:#ffffff 20px solid;">您的浏览器不支持 video 标签。</video>
       </div>
 	  {% endif %}
+        {% if case.content %}
       <div class="product-title">详细信息</div>
       <div class="product-content">
           {{ case.content|raw }}
       </div>
+        {% endif %}
       <div class="page-main">
         <ul class="pager pager-round">
             {% if _pre %}

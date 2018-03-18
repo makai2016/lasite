@@ -75,9 +75,4 @@ AppBundle\Entity\Cases:
                 message: 标题不能为空
             - NotNull:
                 message: 标题不能为空
-        content:
-            - NotBlank:
-                message: 内容不能为空
-            - NotNull:
-                message: 内容不能为空
 
