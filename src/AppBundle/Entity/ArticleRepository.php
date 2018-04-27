@@ -18,7 +18,7 @@ class ArticleRepository extends AbstractRepository
      * @param null $lockVersion
      * @return Article|object
      */
-    public function findWithCategory($id, $lockMode = LockMode::NONE, $lockVersion = null)
+    public function findWithCategory($id, $lockMode = null, $lockVersion = null)
     {
         $entity = parent::find($id,$lockMode,$lockVersion);
         if($entity){
