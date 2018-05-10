@@ -18,3 +18,7 @@ users:
   type: rest
   resource: AppBundle\Controller\Bapi\UserController
   name_prefix: bapi_
+job:
+  type: rest
+  resource: AppBundle\Controller\Bapi\JobOpeningsController
+  name_prefix: bapi_

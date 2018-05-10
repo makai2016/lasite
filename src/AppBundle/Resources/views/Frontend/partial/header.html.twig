@@ -1,6 +1,7 @@
 {% set _route = app.request.attributes.get('_route') %}
 {% set _article = ['article_list','article_info','article_category'] %}
 {% set _case = ['case_list','case_info','case_category'] %}
+{% set _job = ['job_list','job_info'] %}
 <header role="heading" class="current {% if app.request.attributes.get('_route')!='home'  %}active{% endif %}">
   <div class="head-box">
     <div class="head-top">
@@ -29,6 +30,9 @@
 
         <li class="nav1 {% if _route in _case %}active{% endif %}">
           <a href="{{ path('case_list') }}"  title="案例展示" data-alert="全部">案例展示</a>
+        </li>
+        <li class="nav1 {% if _route in _job %}active{% endif %}">
+          <a href="{{ path('job_list') }}"  title="人才招聘" data-alert="全部">人才招聘</a>
         </li>
         <li class="background"></li>
       </ul>

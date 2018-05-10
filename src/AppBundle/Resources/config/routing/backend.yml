@@ -84,3 +84,20 @@ b_user_edit:
         _controller: AppBundle:Backend\User:edit
     requirements:
         id: ^([1-9])|([1-9]\d+)$
+b_job_list:
+    path: /jobs
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\JobOpenings:list
+b_job_new:
+    path: /jobs/create
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\JobOpenings:create
+b_job_edit:
+    path: /jobs/{id}
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\JobOpenings:edit
+    requirements:
+        id: ^([1-9])|([1-9]\d+)$

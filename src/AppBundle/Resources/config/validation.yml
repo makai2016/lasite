@@ -76,3 +76,19 @@ AppBundle\Entity\Cases:
             - NotNull:
                 message: 标题不能为空
 
+AppBundle\Entity\JobOpenings:
+    properties:
+        title:
+            - NotBlank:
+                message: 标题不能为空
+            - NotNull:
+                message: 标题不能为空
+        content:
+            - NotBlank:
+                message: 内容不能为空
+            - NotNull:
+                message: 内容不能为空
+        flow:
+            - Type:
+                type: numeric
+                message: 浏览量不是一个数字

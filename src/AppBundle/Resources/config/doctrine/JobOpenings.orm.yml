@@ -1,0 +1,44 @@
+AppBundle\Entity\JobOpenings:
+    type: entity
+    table: job_openings
+    repositoryClass: AppBundle\Entity\JobOpeningsRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        title:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+            comment: 标题
+        introduce:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+            comment: 介绍
+        content:
+            type: text
+            nullable: false
+            length: 65535
+            fixed: false
+            comment: 内容
+        flow:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 浏览量
+            default: '0'
+        createdAt:
+            type: datetime
+            nullable: false
+            comment: 创建时间
+            column: created_at
+    lifecycleCallbacks:
+      prePersist: [createdAtHandle]

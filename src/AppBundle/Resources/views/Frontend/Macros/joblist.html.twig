@@ -1,0 +1,20 @@
+{% macro joblist(jobs) %}
+    <ul class="met-page-ajax">
+        {% for item in jobs %}
+            <li class="news_img">
+                <font><b>{{ item.createdAt.format('d') }}</b><u>{{ item.createdAt.format('M') }}</u></font>
+                <span>
+                    <a href="{{ path('job_info',{id: item.id}) }}" title="{{ item.title }}" target='_self'><h3>{{ item.title }}</h3></a>
+                    <em>
+                        <u>阅读</u>
+                        <i class="fa fa-eye"></i>{{ item.flow }}&nbsp;·&nbsp;<u>发布日期</u>
+                        <i class="fa fa-clock-o"></i>
+                        {{ item.createdAt.format('Y-m-d') }}
+                    </em>
+                    <p>　{{ item.introduce }}　</p>
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+    {{ knp_pagination_render(jobs,'@Partial/sliding_frontend.html.twig') }}
+{% endmacro %}

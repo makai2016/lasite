@@ -1,0 +1,79 @@
+{% extends '@Layouts/frontendFrame.html.twig' %}
+{% from '@Frontend/Macros/joblist.html.twig' import joblist %}
+{% from '@Frontend/partial/toolbar.html.twig' import toolbar %}
+{% block title %}
+    <title>人才招聘 - 提供基于文化创意与数字科技的整体解决方案 021-52855980</title>
+    <meta name="keywords" content="互动多媒体,多媒体互动,三维动画,VR游戏,虚拟现实,二维动画,课件定制,课件制作,视频拍摄,后期剪辑,触摸屏,查询屏,应用软件开发,flash游戏">
+    <meta name="description" content="上海盟邑数字科技有限公司专注为不同行业客户提供基于文化创意与数字科技的整体解决方案。在互动多媒体、三维动画、VR虚拟现实、二维动画、视频拍摄等方面，有着丰富的制作经验和深厚的设计制作实力。力求使传播效果达到最大化，充分提升客户的品牌形象。">
+{% endblock %}
+
+{% block content %}
+{% include '@Frontend/partial/header.html.twig' %}
+    <section role="main" class="subpage active">
+        <div class="main-box">
+            {{ toolbar([],3,'') }}
+            <div class="information-box">
+                {{ joblist(jobs) }}
+            </div>
+            <button type="button" class="btn btn-icon btn-primary btn-squared met-scroll-top hide">
+                <i class="icon wb-chevron-up" aria-hidden="true"></i>
+            </button>
+        </div>
+    </section>
+{% endblock %}
+
+{% block css %}
+    <!--start-->
+    <link rel="stylesheet" href="{{ asset('static/css/index.css','frontend') }}">
+    <!--web-icons-->
+    <link rel="stylesheet" href="{{ asset('plugins/font-awesome/css/font-awesome.min.css','frontend') }}">
+    {#<link rel="stylesheet" href="{{ asset('static/css/swiper-3.3.1.min.css','frontend') }}">#}
+    <link rel="stylesheet" href="{{ asset('static/css/webui-popover.min.css','frontend') }}">
+    <link rel="stylesheet" href="{{ asset('static/css/metinfo.css','frontend') }}">
+    <!--end-->
+{% endblock %}
+{% block js %}
+    <script src="{{ asset('static/js/breakpoints.min.js','frontend') }}"></script>
+    <script src="{{ asset('static/js/core.min.js','frontend') }}"></script>
+    {#<script src="{{ asset('static/js/site.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/modernizr.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/formValidation.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/jquery.placeholder.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/jquery.asScrollable.all.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/jquery.asScrollable.all.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/alertify.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/jquery.appear.js','frontend') }}"></script>#}
+    <script src="{{ asset('static/js/jquery.webui-popover.min.js','frontend') }}"></script>
+    {#<script src="{{ asset('static/js/masonry.pkgd.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/jquery.bootstrap-touchspin.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/spin.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/ladda.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/tablesaw.js','frontend') }}"></script>#}
+    <script src="{{ asset('static/js/swiper-3.3.1.jquery.min.js','frontend') }}"></script>
+    {#<script src="{{ asset('static/js/jquery.lazyload.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/lightgallery-all.min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/jquery.matchHeight-min.js','frontend') }}"></script>#}
+    {#<script src="{{ asset('static/js/slick.min.js','frontend') }}"></script>#}
+    <script src="{{ asset('static/js/jquery.cookie.js','frontend') }}"></script>
+    {#<script src="{{ asset('static/js/isotope.pkgd.min.js','frontend') }}"></script>#}
+    <script src="{{ asset('static/js/metinfo.js','frontend') }}"></script>
+    <script>
+        $('.sidebar-icon').on('click',function(){
+            if($(this).hasClass('active')){
+                $(this).removeClass('active');
+                $('section[role=main],header[role=heading]').removeClass('active');
+                $.cookie('head_active','current',{path:'/'});
+            }else{
+                $(this).addClass('active');
+                $('section[role=main],header[role=heading]').addClass('active');
+                $.cookie('head_active','active',{path:'/'});
+            }
+            window.setTimeout(function(){
+                if($('#met-grid').length>0) MetAnimOnScroll();
+            },500);
+        });
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            $('.sidebar-icon').click()
+        }
+    </script>
+{% endblock %}

@@ -32,3 +32,13 @@ tag_list:
     _controller: AppBundle:Frontend\Tags:index
   requirements:
     tagId: ^([1-9])|([1-9]\d+)$
+job_list:
+  path: /job_openings/
+  defaults:
+    _controller: AppBundle:Frontend\JobOpenings:index
+job_info:
+  path: /job_openings/{id}.html
+  defaults:
+    _controller: AppBundle:Frontend\JobOpenings:info
+  requirements:
+    id: ^([1-9])|([1-9]\d+)$

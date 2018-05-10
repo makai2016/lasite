@@ -16,6 +16,8 @@
           <a href="{{ path('article_list') }}" title="全部">全部</a>
 		{% elseif type==2 %}
 		  <a href="{{ path('case_list') }}" title="全部">全部</a>
+		{% elseif type==3 %}
+		  <a href="{{ path('job_list') }}" title="全部">全部</a>
     	{% endif %}
         </li>
         {% for item in categorys %}
