@@ -4,11 +4,11 @@
 {% block title %}
     {% set _route = app.request.attributes.get('_route') %}
     {% if _route =='article_list' %}
-      <title>新闻资讯 - 提供基于文化创意与数字科技的整体解决方案 021-52855980</title>
-      <meta name="keywords" content="互动多媒体,多媒体互动,三维动画,VR游戏,虚拟现实,二维动画,课件定制,课件制作,视频拍摄,后期剪辑,触摸屏,查询屏,应用软件开发,flash游戏">
-      <meta name="description" content="上海盟邑数字科技有限公司专注为不同行业客户提供基于文化创意与数字科技的整体解决方案。在互动多媒体、三维动画、VR虚拟现实、二维动画、视频拍摄等方面，有着丰富的制作经验和深厚的设计制作实力。力求使传播效果达到最大化，充分提升客户的品牌形象。">
+      <title>新闻资讯 - 多媒体互动,触摸屏制作,三维动画,二维flash动画,视频制作,VR制作,课件制作,flash游戏</title>
+      <meta name="keywords" content="互动多媒体,触摸屏制作,三维动画制作,二维flash动画制作,视频拍摄,视频制作,VR制作,课件制作,flash游戏">
+      <meta name="description" content="盟邑数字科技为客户提供文化创意与数字科技整体解决方案，在互动多媒体,触摸屏制作,三维动画,二维flash动画,视频制作,VR制作,课件制作,flash游戏有丰富的经验，力求使传播效果达到最大化，充分提升客户的品牌形象。">
     {% elseif _route == 'case_category' %}
-      <title>{{ current.name }} - 提供基于文化创意与数字科技的整体解决方案 021-52855980</title>
+      <title>{{ current.name }} - 多媒体互动,触摸屏制作,三维动画,二维flash动画,视频制作,VR制作,课件制作,flash游戏</title>
       <meta name="keywords" content="{{ current.keywords }}">
       <meta name="description" content="{{ current.description }}">
     {% endif %}
