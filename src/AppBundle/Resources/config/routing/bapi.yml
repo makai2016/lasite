@@ -18,3 +18,7 @@ users:
   type: rest
   resource: AppBundle\Controller\Bapi\UserController
   name_prefix: bapi_
+secondCategory:
+  type: rest
+  resource: AppBundle\Controller\Bapi\SecondCategoryController
+  name_prefix: bapi_

@@ -7,8 +7,13 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Category
  */
-class Category extends AbstractEntity
+class SecondCategory extends AbstractEntity
 {
+    /**
+     * @var integer
+     */
+    private $categoryId;
+
     /**
      * @var string
      */
@@ -18,11 +23,6 @@ class Category extends AbstractEntity
      * @var string
      */
     private $route;
-
-    /**
-     * @var integer
-     */
-    private $type;
 
     /**
      * @var string
@@ -40,16 +40,33 @@ class Category extends AbstractEntity
     private $id;
 
     /**
-     * @var array
+     * Set categoryId
+     *
+     * @param integer $categoryId
+     * @return self
      */
-    private $seconds;
+    public function setCategoryId($categoryId)
+    {
+        $this->categoryId = $categoryId;
 
+        return $this;
+    }
+
+    /**
+     * Get categoryId
+     *
+     * @return integer
+     */
+    public function getCategoryId()
+    {
+        return $this->categoryId;
+    }
 
     /**
      * Set name
      *
      * @param string $name
-     * @return Category
+     * @return self
      */
     public function setName($name)
     {
@@ -72,7 +89,7 @@ class Category extends AbstractEntity
      * Set route
      *
      * @param string $route
-     * @return Category
+     * @return self
      */
     public function setRoute($route)
     {
@@ -95,7 +112,7 @@ class Category extends AbstractEntity
      * Set keywords
      *
      * @param string $keywords
-     * @return Category
+     * @return self
      */
     public function setKeywords($keywords)
     {
@@ -118,7 +135,7 @@ class Category extends AbstractEntity
      * Set description
      *
      * @param integer $description
-     * @return Category
+     * @return self
      */
     public function setDescription($description)
     {
@@ -137,28 +154,6 @@ class Category extends AbstractEntity
         return $this->description;
     }
 
-    /**
-     * Set Type
-     *
-     * @param $type
-     *
-     * @return Category
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return int
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
 
     /**
      * Get id
@@ -168,24 +163,5 @@ class Category extends AbstractEntity
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @param $seconds
-     *
-     * @return $this
-     */
-    public function setSeconds($seconds)
-    {
-        $this->seconds = $seconds;
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getSeconds()
-    {
-        return $this->seconds;
     }
 }

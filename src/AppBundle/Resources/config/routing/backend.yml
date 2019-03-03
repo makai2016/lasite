@@ -84,3 +84,18 @@ b_user_edit:
         _controller: AppBundle:Backend\User:edit
     requirements:
         id: ^([1-9])|([1-9]\d+)$
+b_second_category_list:
+    path: /case/secondcategory
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\SecondCategory:list
+b_second_category_new:
+    path: /case/secondcategory/create
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\SecondCategory:create
+b_second_category_edit:
+    path: /case/secondcategory/{id}
+    methods: [GET]
+    defaults:
+        _controller: AppBundle:Backend\SecondCategory:edit

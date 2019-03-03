@@ -86,6 +86,11 @@ class Cases extends AbstractEntity
     private $category;
 
     /**
+     * @var integer
+     */
+    private $secondId = 0;
+
+    /**
      * @var array
      */
     private $tags;
@@ -111,6 +116,24 @@ class Cases extends AbstractEntity
     public function getCategoryId()
     {
         return $this->categoryId;
+    }
+
+    /**
+     * @param $secondId
+     * @return $this
+     */
+    public function setSecondId($secondId)
+    {
+        $this->secondId = $secondId;
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getSecondId()
+    {
+        return $this->secondId;
     }
 
     /**

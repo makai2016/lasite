@@ -55,6 +55,10 @@ class CaseController extends AbstractController
     public function createAction(Request $request)
     {
         $categorys = $this->getDoctrine()->getRepository('AppBundle:Category')->findBy(['type'=>CategoryRepository::CASE_TYPE]);
+        foreach ($categorys as $category){
+            $seconds = $this->getManager()->getRepository('AppBundle:SecondCategory')->findBy(['categoryId'=>$category->getId()]);
+            $category->setSeconds($seconds);
+        }
         $view = $this->view()
             ->setData(compact('categorys'))
             ->setTemplate('@Backend\case\create.html.twig');
@@ -77,7 +81,10 @@ class CaseController extends AbstractController
 
         $tags = $this->get('app.tag_peer')->getCaseTag($id);
         $categorys = $this->getDoctrine()->getRepository('AppBundle:Category')->findBy(['type'=>CategoryRepository::CASE_TYPE]);
-
+        foreach ($categorys as $category){
+            $seconds = $this->getManager()->getRepository('AppBundle:SecondCategory')->findBy(['categoryId'=>$category->getId()]);
+            $category->setSeconds($seconds);
+        }
         $view = $this->view()
             ->setData(compact('case','categorys','tags'))
             ->setTemplate('@Backend\case\edit.html.twig');

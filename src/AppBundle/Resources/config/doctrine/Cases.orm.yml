@@ -16,6 +16,11 @@ AppBundle\Entity\Cases:
             nullable: false
             unsigned: false
             column: category_id
+        secondId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: second_id
         title:
             type: string
             nullable: false

@@ -12,6 +12,10 @@ article_category:
   path: /article/{category}/
   defaults:
     _controller: AppBundle:Frontend\Article:category
+article_secondcategory:
+  path: /article/{category}/{second}/
+  defaults:
+    _controller: AppBundle:Frontend\Article:secondCategory
 case_list:
   path: /case/
   defaults:
@@ -26,6 +30,10 @@ case_category:
   path: /case/{category}/
   defaults:
     _controller: AppBundle:Frontend\Case:category
+case_secondcategory:
+  path: /case/{category}/{second}/
+  defaults:
+    _controller: AppBundle:Frontend\Case:secondCategory
 tag_list:
   path: /tags/{tagId}/
   defaults:

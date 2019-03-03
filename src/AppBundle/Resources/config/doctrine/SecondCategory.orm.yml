@@ -1,0 +1,39 @@
+AppBundle\Entity\SecondCategory:
+    type: entity
+    table: second_category
+    repositoryClass: AppBundle\Entity\SecondCategoryRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        categoryId:
+            type: integer
+            nullable: false
+            unsigned: false
+            column: category_id
+        name:
+            type: string
+            nullable: false
+            length: 255
+            fixed: false
+        route:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+        keywords:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+        description:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+    lifecycleCallbacks: {  }

@@ -10,6 +10,7 @@ namespace AppBundle\Controller\Frontend;
 
 
 use AppBundle\Controller\AbstractController;
+use AppBundle\Entity\SecondCategory;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\CategoryRepository;
 use AppBundle\Entity\Category;
@@ -18,8 +19,14 @@ class CaseController extends AbstractController
 {
     public function indexAction(Request $request)
     {
-        $cases = self::_case($request->query->getInt('page',1));
+        $cases = self::_case($request->query->getInt('page',1),null,null);
         $categorys = $this->getDoctrine()->getRepository('AppBundle:Category')->findBy(['type'=>CategoryRepository::CASE_TYPE]);
+
+        foreach ($categorys as $category){
+            $seconds = $this->getManager()->getRepository('AppBundle:SecondCategory')->findBy(['categoryId'=>$category->getId()]);
+            $category->setSeconds($seconds);
+        }
+
         $view = $this->view(compact('cases','categorys'));
         $view->setTemplate('@Frontend\case\index.html.twig');
         return $this->handleView($view);
@@ -32,8 +39,34 @@ class CaseController extends AbstractController
         if(!$current){
             throw $this->createNotFoundException();
         }
-        $cases = self::_case($request->query->getInt('page',1),$current);
+        $cases = self::_case($request->query->getInt('page',1),$current,null);
         $categorys = $this->getDoctrine()->getRepository('AppBundle:Category')->findBy(['type'=>CategoryRepository::CASE_TYPE]);
+
+        foreach ($categorys as $category){
+            $seconds = $this->getManager()->getRepository('AppBundle:SecondCategory')->findBy(['categoryId'=>$category->getId()]);
+            $category->setSeconds($seconds);
+        }
+        $view = $this->view(compact('cases','categorys','current'));
+        $view->setTemplate('@Frontend\case\index.html.twig');
+        return $this->handleView($view);
+    }
+
+    public function secondCategoryAction(Request $request,$category,$second)
+    {
+        $current = $this->getManager()->getRepository('AppBundle:Category')
+            ->findOneBy(['route'=>$category,'type'=>CategoryRepository::CASE_TYPE]);
+        $secondEntity = $this->getManager()->getRepository('AppBundle:SecondCategory')
+            ->findOneBy(['route'=>$second]);
+        if(!$current||$current->getId()!=$secondEntity->getCategoryId()){
+            throw $this->createNotFoundException();
+        }
+        $cases = self::_case($request->query->getInt('page',1),$current,$secondEntity);
+        $categorys = $this->getDoctrine()->getRepository('AppBundle:Category')->findBy(['type'=>CategoryRepository::CASE_TYPE]);
+
+        foreach ($categorys as $category){
+            $seconds = $this->getManager()->getRepository('AppBundle:SecondCategory')->findBy(['categoryId'=>$category->getId()]);
+            $category->setSeconds($seconds);
+        }
         $view = $this->view(compact('cases','categorys','current'));
         $view->setTemplate('@Frontend\case\index.html.twig');
         return $this->handleView($view);
@@ -54,7 +87,7 @@ class CaseController extends AbstractController
         return $this->handleView($view);
     }
 
-    private function _case($page,$category=null, $limit=12)
+    private function _case($page,$category=null,$secondEntity=null, $limit=12)
     {
         $qb = $this->getQueryBuilder();
         $qb->select('c')
@@ -64,6 +97,9 @@ class CaseController extends AbstractController
             ->addOrderBy('c.id','DESC');
         if($category instanceof Category){
             $qb->andWhere("c.categoryId={$category->getId()}");
+        }
+        if($secondEntity instanceof SecondCategory){
+            $qb->andWhere("c.secondId={$secondEntity->getId()}");
         }
         $articles = $this->pagination($qb,$page,$limit);
         $items = $articles->getItems();

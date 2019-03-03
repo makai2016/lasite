@@ -1,5 +1,5 @@
 {% macro toolbar(categorys,type,info) %}
-  {% if type ==1 %}{% set _croute = 'article_category' %}{% elseif type==2 %}{% set _croute = 'case_category' %}{% endif %}
+  {% if type ==1 %}{% set _croute = 'article_category' %}{% set _scroute='article_secondcategory' %}{% elseif type==2 %}{% set _croute = 'case_category' %}{% set _scroute='case_secondcategory' %}{% endif %}
   {% set _params = app.request.get('_route_params') %}
   {% set _route = app.request.attributes.get('_route') %}
 
@@ -19,10 +19,17 @@
     	{% endif %}
         </li>
         {% for item in categorys %}
-        <li class="{% if (_route==_croute and _params.category==item.route) or (info and info.categoryId==item.id) %}active{% endif %}">
+        <li class="{% if (_route==_croute and _params.category==item.route) or (info and info.categoryId==item.id) or (_route==_scroute and _params.category==item.route) %}active{% endif %}">
           <a href="{{ path(_croute,{category: item.route}) }}" title="{{ item.name }}">
               {{ item.name }}
           </a>
+          {% if item.seconds %}
+          <ul>
+            {% for second in item.seconds %}
+                <li><a href="{{ path(_scroute,{category:item.route,second:second.route}) }}">{{ second.name }}</a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
         </li>
         {% endfor %}
 

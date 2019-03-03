@@ -38,6 +38,7 @@ class AppExtension extends \Twig_Extension
             'nextArticle'=> new \Twig_Function_Method($this, 'nextArticle'),
             'prevCase'=> new \Twig_Function_Method($this, 'prevCase'),
             'nextCase'=> new \Twig_Function_Method($this, 'nextCase'),
+            'secondCategoryPreProtery'=> new \Twig_Function_Method($this, 'secondCategoryPreProtery'),
         ];
     }
 
@@ -117,6 +118,18 @@ class AppExtension extends \Twig_Extension
         $result = $qb->getQuery()->getOneOrNullResult();
 
         return $result;
+    }
+
+    public function secondCategoryPreProtery($arr,$id,$method)
+    {
+
+        if(!is_array($arr)) return '';
+        foreach ($arr as $class)
+        {
+
+            if($id == $class->getId()) return $class->{$method}();
+        }
+        return '';
     }
 
 }
